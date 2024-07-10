@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Banzai TV";
+}
+
+<div class="container">
+
+    <br />
+
+    <div class="card">
+
+        <div class="card-header">
+            <h2>Login de administrador!</h2>
+        </div>
+
+        <div class="card-body">
+            <form asp-controller="administrador" asp-action="logar" method="post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1" class="form-label">Email*</label>
+                            <input type="email" class="form-control" id="email" placeholder="Digite o email">
+                        </div>
+                        <div class="col">
+                            <label for="senha" class="form-label">Senha*</label>
+                            <input type="password" class="form-control" id="senha" placeholder="Digite a senha">
+                        </div>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Logar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+
