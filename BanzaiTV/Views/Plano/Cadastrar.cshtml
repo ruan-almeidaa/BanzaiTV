@@ -1,0 +1,40 @@
+﻿@model  PlanoModel;
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="card-header">
+            <h2>Cadastro de plano</h2>
+        </div>
+        <div class="card-body">
+            <form asp-controller="Plano" asp-action="Cadastrar" method="post">
+                <hr />
+
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nome" class="form-label">Título do plano *</label>
+                        <input type="text" asp-for="Titulo" class="form-control" id="titulo" required>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="duracao" class="form-label">Duração em meses *</label>
+                        <input type="number" asp-for="mesesDuracao" class="form-control" id="duracao" required>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="valor" class="form-label">Valor mensal *</label>
+                        <input type="number" step="0.01" min="0.01" asp-for="valor" class="form-control" id="valor" required>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
