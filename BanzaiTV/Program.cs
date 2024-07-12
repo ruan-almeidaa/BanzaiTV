@@ -18,6 +18,8 @@ builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IPlanoRepository, PlanoRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IPlanoService, PlanoService>();
+builder.Services.AddScoped<IAdministradorRepository, AdministradorRepository>();
+builder.Services.AddScoped<IAdministradorService, AdministradorService>();
 
 var app = builder.Build();
 
