@@ -29,7 +29,14 @@
                                 <th scope="row">@cliente.Nome</th>
                                 <th>@cliente.PlanoId</th>
                                 <th>@cliente.DiaVencimento</th>
-                                <th><button type="button" class="btn btn-primary btn-sm">Ver mais</button></th>
+                                <th>
+                                    <div>
+                                        <a role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Ver"><i class="fa-solid fa-circle-info"></i></a>
+                                        <a role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar"><i class="fa-solid fa-square-pen"></i></a>
+                                        <a role="button" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Excluir"><i class="fa-solid fa-square-xmark"></i></a>
+                                    </div>
+
+                            </th>
                             </tr>
                         }
                     }
