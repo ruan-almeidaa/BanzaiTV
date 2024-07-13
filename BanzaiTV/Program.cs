@@ -14,12 +14,21 @@ var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetService<IConfiguration>();
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<BancoContext>(o => o.UseNpgsql(configuration.GetConnectionString("Database")));
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IPlanoRepository, PlanoRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IPlanoService, PlanoService>();
 builder.Services.AddScoped<IAdministradorRepository, AdministradorRepository>();
 builder.Services.AddScoped<IAdministradorService, AdministradorService>();
+builder.Services.AddScoped<ISessao, SessaoService>();
+
+builder.Services.AddSession(o =>
+{
+    o.Cookie.HttpOnly = true;
+    o.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -37,6 +46,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
