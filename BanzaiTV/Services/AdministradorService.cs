@@ -1,4 +1,5 @@
-﻿using BanzaiTV.Interfaces;
+﻿using BanzaiTV.Helper;
+using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 
 namespace BanzaiTV.Services
@@ -14,7 +15,11 @@ namespace BanzaiTV.Services
 
         public AdministradorModel Logar(AdministradorModel administrador)
         {
-            throw new NotImplementedException();
+            administrador.senha = Criptografia.GerarHash(administrador.senha);
+
+            _administradorRepository.Logar(administrador);
+
+            return administrador;
         }
     }
 }

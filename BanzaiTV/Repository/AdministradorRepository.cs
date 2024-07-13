@@ -1,13 +1,21 @@
-﻿using BanzaiTV.Interfaces;
+﻿using BanzaiTV.Database;
+using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 
 namespace BanzaiTV.Repository
 {
     public class AdministradorRepository : IAdministradorRepository
     {
-        public AdministradorModel Logar(AdministradorModel administradorModel)
+        private readonly BancoContext _bancoContext;
+        public AdministradorRepository(BancoContext bancoContext)
         {
-            throw new NotImplementedException();
+            _bancoContext = bancoContext;
+        }
+        public AdministradorModel Logar(AdministradorModel p_administradorModel)
+        {
+            return _bancoContext.Administrador.FirstOrDefault
+                (a => a.Email == p_administradorModel.Email && a.senha == p_administradorModel.senha);
+            
         }
     }
 }
