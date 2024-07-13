@@ -16,8 +16,15 @@ namespace BanzaiTV.Controllers
         }
         public IActionResult Index()
         {
-            if(_sessao.BuscarSessao() != null) return RedirectToAction("Index","Administrador");
-            return View();
+            if (_sessao.BuscarSessao() != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
         public IActionResult Login()
         {
@@ -33,9 +40,16 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                _administradorService.Logar(administradorModel);
-                _sessao.CriarSessao(administradorModel);
-                return View("Login");
+                if(_administradorService.Logar(administradorModel) != null)
+                {
+                    _sessao.CriarSessao(administradorModel);
+                    return RedirectToAction("Index", "Administrador");
+                }
+                else
+                {
+                    return View("Login");
+                }
+                
             }
             catch (Exception)
             {

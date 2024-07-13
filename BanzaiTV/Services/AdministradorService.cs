@@ -17,9 +17,7 @@ namespace BanzaiTV.Services
         {
             administrador.senha = Criptografia.GerarHash(administrador.senha);
 
-            _administradorRepository.Logar(administrador);
-
-            return administrador;
+            return _administradorRepository.Logar(administrador);
         }
     }
 }
