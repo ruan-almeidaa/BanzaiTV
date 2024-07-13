@@ -1,4 +1,5 @@
-﻿using BanzaiTV.Interfaces;
+﻿using BanzaiTV.Helper;
+using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 using Microsoft.AspNetCore.Mvc;
 

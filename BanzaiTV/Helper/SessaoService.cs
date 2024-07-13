@@ -1,10 +1,9 @@
-﻿using BanzaiTV.Interfaces;
-using BanzaiTV.Models;
+﻿using BanzaiTV.Models;
 using Newtonsoft.Json;
 using System.Globalization;
 using System.Text.Json.Serialization;
 
-namespace BanzaiTV.Services
+namespace BanzaiTV.Helper
 {
     public class SessaoService : ISessao
     {
