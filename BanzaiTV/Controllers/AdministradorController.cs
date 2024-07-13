@@ -28,7 +28,15 @@ namespace BanzaiTV.Controllers
         }
         public IActionResult Login()
         {
-            return View();
+            if (_sessao.BuscarSessao() != null)
+            {
+                return RedirectToAction("index", "Administrador");
+            }
+            else
+            {
+                return View();
+            }
+                
         }
         public IActionResult Sair()
         {
