@@ -37,5 +37,30 @@ namespace BanzaiTV.Services
                 throw;
             }
         }
+
+        public ClienteModel BuscaPorId(int id)
+        {
+            try
+            {
+                return _clienteRepository.BuscaPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public ClienteModel Editar(ClienteModel cliente)
+        {
+            try
+            {
+                return _clienteRepository.Editar(cliente);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

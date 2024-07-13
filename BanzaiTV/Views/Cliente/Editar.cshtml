@@ -5,10 +5,10 @@
     <div class="card">
 
         <div class="card-header">
-            <h2>Cadastro de cliente</h2>
+            <h2>Editar cliente</h2>
         </div>
         <div class="card-body">
-            <form asp-controller="Cliente" asp-action="Cadastrar" method="post">
+            <form asp-controller="Cliente" asp-action="Editar" method="post">
                 <div class="row">
                     <div class="col align-content-center">
                         <div class="form-check mb-3">
@@ -21,7 +21,7 @@
 
                     <div class="col">
                         <label for="diaVencimento" class="form-label">Dia do vencimento:</label>
-                        <select asp-for ="DiaVencimento" id="diaVencimento" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <select asp-for="DiaVencimento" id="diaVencimento" class="form-select form-select-sm" aria-label=".form-select-sm example">
                             <option value="01">01</option>
                             <option value="02">02</option>
                             <option value="03">03</option>
@@ -90,7 +90,8 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <a href="/Cliente" class="btn btn-danger">Cancelar</a>
             </form>
         </div>
 
