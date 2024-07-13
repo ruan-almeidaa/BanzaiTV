@@ -62,5 +62,20 @@ namespace BanzaiTV.Services
                 throw;
             }
         }
+
+        public bool Excluir(int id)
+        {
+            try
+            {
+                _clienteRepository.Excluir(BuscaPorId(id));
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+        }
     }
 }

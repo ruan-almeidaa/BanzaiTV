@@ -31,9 +31,9 @@
                                 <th>@cliente.DiaVencimento</th>
                                 <th>
                                     <div>
-                                        <a role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Ver"><i class="fa-solid fa-circle-info"></i></a>
-                                        <a role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar"><i class="fa-solid fa-square-pen"></i></a>
-                                        <a role="button" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Excluir"><i class="fa-solid fa-square-xmark"></i></a>
+                                        <a data-bs-toggle ="tooltip" data-bs-placement="top" title="Ver cadastro" role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Ver"><i class="fa-solid fa-circle-info"></i></a>
+                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar"><i class="fa-solid fa-square-pen"></i></a>
+                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" role="button" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="ConfirmaExcluir"><i class="fa-solid fa-square-xmark"></i></a>
                                     </div>
 
                             </th>

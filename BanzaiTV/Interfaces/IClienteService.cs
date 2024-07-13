@@ -8,5 +8,6 @@ namespace BanzaiTV.Interfaces
         List<ClienteModel> BuscarTodos();
         ClienteModel BuscaPorId(int id);
         ClienteModel Editar(ClienteModel cliente);
+        bool Excluir(int id);
     }
 }

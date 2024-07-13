@@ -101,5 +101,48 @@ namespace BanzaiTV.Controllers
             }
 
         }
+        [HttpGet]
+        public IActionResult ConfirmaExcluir(int id)
+        {
+            try
+            {
+                ClienteModel cliente = _clienteService.BuscaPorId(id);
+                if (_sessao.BuscarSessao() != null && cliente != null)
+                {
+                    return View(cliente);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Cliente");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public IActionResult Excluir(int id)
+        {
+            try
+            {
+                if((_sessao.BuscarSessao() != null)){
+                    _clienteService.Excluir(id);
+                    return RedirectToAction("Index", "Cliente");
+                }else { 
+                    return RedirectToAction("Index", "Home");
+                }
+                
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
 }
