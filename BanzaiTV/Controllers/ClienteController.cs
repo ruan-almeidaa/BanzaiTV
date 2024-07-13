@@ -1,4 +1,5 @@
-﻿using BanzaiTV.Interfaces;
+﻿using BanzaiTV.Helper;
+using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 using BanzaiTV.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -8,19 +9,35 @@ namespace BanzaiTV.Controllers
     public class ClienteController : Controller
     {
         private readonly IClienteService _clienteService;
-        public ClienteController(IClienteService clienteService)
+        private readonly ISessao _sessao;
+        public ClienteController(IClienteService clienteService, ISessao sessao)
         {
             _clienteService = clienteService;
+            _sessao = sessao;
         }
 
         public IActionResult Index()
         {
-            return View();
+            if (_sessao.BuscarSessao() != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public IActionResult Cadastrar()
         {
-            return View();
+            if (_sessao.BuscarSessao() != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]
