@@ -11,12 +11,25 @@ namespace BanzaiTV.Services
         {
             _clienteRepository = clienteRepository;
         }
+
+        public List<ClienteModel> BuscarTodos()
+        {
+            try
+            {
+                return _clienteRepository.BuscarTodos();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public ClienteModel Cadastrar(ClienteModel cliente)
         {
             try
             {
-                _clienteRepository.Cadastrar(cliente);
-                return cliente;
+                return _clienteRepository.Cadastrar(cliente);
             }
             catch (Exception)
             {

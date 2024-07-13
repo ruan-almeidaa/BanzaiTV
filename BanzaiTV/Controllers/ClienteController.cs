@@ -20,7 +20,8 @@ namespace BanzaiTV.Controllers
         {
             if (_sessao.BuscarSessao() != null)
             {
-                return View();
+               List <ClienteModel> clientes = _clienteService.BuscarTodos();
+                return View(clientes);
             }
             else
             {

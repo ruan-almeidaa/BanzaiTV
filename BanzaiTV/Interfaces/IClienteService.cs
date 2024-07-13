@@ -5,5 +5,6 @@ namespace BanzaiTV.Interfaces
     public interface IClienteService
     {
         ClienteModel Cadastrar(ClienteModel cliente);
+        List<ClienteModel> BuscarTodos();
     }
 }
