@@ -23,6 +23,8 @@ builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IPlanoService, PlanoService>();
 builder.Services.AddScoped<IAdministradorRepository, AdministradorRepository>();
 builder.Services.AddScoped<IAdministradorService, AdministradorService>();
+builder.Services.AddScoped<IMensalidadeRepository, MensalidadeRepository>();
+builder.Services.AddScoped<IMensalidadeService, MensalidadeService>();
 builder.Services.AddScoped<ISessao, SessaoService>();
 
 builder.Services.AddSession(o =>
