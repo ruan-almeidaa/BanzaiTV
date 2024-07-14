@@ -48,32 +48,14 @@ namespace BanzaiTV.Repository
             }
         }
 
-        public ClienteModel Editar(ClienteModel p_cliente)
+        public ClienteModel Editar(ClienteModel cliente)
         {
             try
             {
-                ClienteModel clienteNoBanco = BuscaPorId(p_cliente.Id);
-
-                if (clienteNoBanco != null) {
-                    clienteNoBanco.Nome = p_cliente.Nome;
-                    clienteNoBanco.Email = p_cliente.Email;
-                    clienteNoBanco.Celular = p_cliente.Celular;
-                    clienteNoBanco.Cpf = p_cliente.Cpf;
-                    clienteNoBanco.DiaVencimento = p_cliente.DiaVencimento;
-                    clienteNoBanco.PlanoId = p_cliente.PlanoId;
-                    clienteNoBanco.Ativo = p_cliente.Ativo;
-
-                    _bancoContext.Clientes.Update(clienteNoBanco);
-                    _bancoContext.SaveChanges();
-                    return clienteNoBanco;
-
-
-                }
-                else
-                {
-                    return null;
-                }
-
+                _bancoContext.ChangeTracker.Clear();
+                _bancoContext.Clientes.Update(cliente);
+                _bancoContext.SaveChanges();
+                return cliente;
             }
             catch (Exception)
             {

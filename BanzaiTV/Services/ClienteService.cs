@@ -55,7 +55,16 @@ namespace BanzaiTV.Services
         {
             try
             {
-                return _clienteRepository.Editar(cliente);
+                ClienteModel clienteNoBanco = BuscaPorId(cliente.Id);
+
+                if(clienteNoBanco != null)
+                {
+                    return _clienteRepository.Editar(cliente);
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch
             {
