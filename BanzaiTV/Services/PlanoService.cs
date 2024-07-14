@@ -64,5 +64,19 @@ namespace BanzaiTV.Services
                 throw;
             }
         }
+
+        public bool Excluir(int id)
+        {
+            try
+            {
+                _planoRepository.Excluir(BuscaPorId(id));
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

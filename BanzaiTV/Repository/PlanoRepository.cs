@@ -71,5 +71,20 @@ namespace BanzaiTV.Repository
                 throw;
             }
         }
+
+        public bool Excluir(PlanoModel plano)
+        {
+            try
+            {
+                _bancoContext.Planos.Remove(plano);
+                _bancoContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

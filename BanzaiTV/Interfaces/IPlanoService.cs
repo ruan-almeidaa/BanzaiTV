@@ -8,5 +8,6 @@ namespace BanzaiTV.Interfaces
         List<PlanoModel> BuscarTodos();
         PlanoModel Editar(PlanoModel plano);
         PlanoModel BuscaPorId(int id);
+        bool Excluir(int id);
     }
 }

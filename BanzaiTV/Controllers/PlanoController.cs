@@ -1,6 +1,7 @@
 ﻿using BanzaiTV.Helper;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
+using BanzaiTV.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BanzaiTV.Controllers
@@ -47,7 +48,7 @@ namespace BanzaiTV.Controllers
             try
             {
                 _planoService.Cadastrar(plano);
-                return View();
+                return RedirectToAction("Index", "Plano");
             }
             catch (Exception)
             {
@@ -99,5 +100,50 @@ namespace BanzaiTV.Controllers
                 throw;
             }
         }
+
+        public IActionResult ConfirmaExcluir(int id)
+        {
+            try
+            {
+                PlanoModel plano = _planoService.BuscaPorId(id);
+                if(_sessao.BuscarSessao() != null && plano != null)
+                {
+                    return View(plano);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Plano");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public IActionResult Excluir(int id)
+        {
+            try
+            {
+                if ((_sessao.BuscarSessao() != null))
+                {
+                    _planoService.Excluir(id);
+                    return RedirectToAction("Index", "Plano");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }
