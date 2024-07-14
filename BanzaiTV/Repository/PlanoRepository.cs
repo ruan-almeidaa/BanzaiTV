@@ -13,6 +13,19 @@ namespace BanzaiTV.Repository
             _bancoContext = bancoContext;
         }
 
+        public List<PlanoModel> BuscarTodos()
+        {
+            try
+            {
+                return _bancoContext.Planos.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public PlanoModel Cadastrar(PlanoModel plano)
         {
 			try

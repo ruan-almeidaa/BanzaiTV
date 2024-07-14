@@ -1,4 +1,5 @@
-﻿using BanzaiTV.Interfaces;
+﻿using BanzaiTV.Helper;
+using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +7,34 @@ namespace BanzaiTV.Controllers
 {
     public class PlanoController : Controller
     {
-        
         private readonly IPlanoService _planoService;
-        public PlanoController(IPlanoService planoService)
+        private readonly ISessao _sessao;
+        public PlanoController(IPlanoService planoService, ISessao sessao)
         {
             _planoService = planoService;
+            _sessao = sessao;
         }
 
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                if (_sessao != null) {
+                    List<PlanoModel> planos = _planoService.BuscarTodos();
+                    return View(planos);
+                }
+                else {
+                    return RedirectToAction("Index", "Home");
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public IActionResult Cadastrar()

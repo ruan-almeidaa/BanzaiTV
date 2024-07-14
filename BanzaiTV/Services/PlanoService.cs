@@ -10,6 +10,20 @@ namespace BanzaiTV.Services
         {
             _planoRepository = planosRepository;
         }
+
+        public List<PlanoModel> BuscarTodos()
+        {
+            try
+            {
+                return _planoRepository.BuscarTodos();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public PlanoModel Cadastrar(PlanoModel plano)
         {
             _planoRepository.Cadastrar(plano);

@@ -1,4 +1,6 @@
-﻿<div class="container">
+﻿@model List<PlanoModel>
+
+<div class="container">
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <a class="btn btn-outline-dark" role="button" asp-area="" asp-controller="Plano" asp-action="Cadastrar">Cadastrar plano</a>
@@ -16,34 +18,29 @@
                         <th scope="col">Título</th>
                         <th scope="col">Duração</th>
                         <th scope="col">Valor mensal</th>
-                        <th scope="col">Ações</th>
+                        <th scope="col"> </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mensal Flex</td>
-                        <td>1 mês</td>
-                        <td>R$ 30,00</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>Trimestral Total</td>
-                        <td>3 meses</td>
-                        <td>R$ 85,00</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>Semestral Premium</td>
-                        <td>6 meses</td>
-                        <td>R$ 165,00</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>Anual Master</td>
-                        <td>12 meses</td>
-                        <td>R$ 320,00</td>
-                        <td>...</td>
-                    </tr>
+                    @if(Model != null && Model.Any())
+                    {
+                        foreach(PlanoModel plano in Model)
+                        {
+                            <tr>
+                                <td>@plano.Titulo</td>
+                                <td>@plano.mesesDuracao</td>
+                                <td>R$ @plano.valor</td>
+                                <th>
+                                    <div>
+                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" role="button" class="me-2" asp-route-id="@plano.Id" asp-controller="Plano" asp-action="Editar"><i class="fa-solid fa-square-pen"></i></a>
+                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" role="button" asp-route-id="@plano.Id" asp-controller="Plano" asp-action="ConfirmaExcluir"><i class="fa-solid fa-square-xmark"></i></a>
+                                    </div>
+
+                                </th>
+                            </tr>
+                        }
+                    }
+
                 </tbody>
             </table>
         </div>
