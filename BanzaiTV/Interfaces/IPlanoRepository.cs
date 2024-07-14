@@ -6,5 +6,7 @@ namespace BanzaiTV.Interfaces
     {
         PlanoModel Cadastrar(PlanoModel plano);
         List<PlanoModel> BuscarTodos();
+        PlanoModel Editar(PlanoModel plano);
+        PlanoModel BuscaPorId(int id);
     }
 }

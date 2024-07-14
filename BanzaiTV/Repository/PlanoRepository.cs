@@ -13,6 +13,19 @@ namespace BanzaiTV.Repository
             _bancoContext = bancoContext;
         }
 
+        public PlanoModel BuscaPorId(int id)
+        {
+            try
+            {
+                return _bancoContext.Planos.Find(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<PlanoModel> BuscarTodos()
         {
             try
@@ -40,6 +53,23 @@ namespace BanzaiTV.Repository
 
 				throw;
 			}
+        }
+
+        public PlanoModel Editar(PlanoModel plano)
+        {
+            try
+            {
+                _bancoContext.ChangeTracker.Clear();
+                _bancoContext.Planos.Update(plano);
+                _bancoContext.SaveChanges();
+                return plano;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

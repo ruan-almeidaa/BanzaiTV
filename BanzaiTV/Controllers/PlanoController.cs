@@ -56,5 +56,48 @@ namespace BanzaiTV.Controllers
             }
 
         }
+
+        public IActionResult Editar(int id)
+        {
+            try
+            {
+                if(_sessao != null)
+                {
+                    PlanoModel plano = _planoService.BuscaPorId(id);
+                    return View(plano);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPost]
+        public IActionResult Editar(PlanoModel plano)
+        {
+            try
+            {
+                if (_sessao != null)
+                {
+                    _planoService.Editar(plano);
+                    return RedirectToAction("Index", "Plano");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
