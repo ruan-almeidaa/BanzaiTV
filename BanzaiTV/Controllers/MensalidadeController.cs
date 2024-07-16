@@ -18,11 +18,14 @@ namespace BanzaiTV.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+            List<MensalidadeModel> mensalidades = _mensalidadeService.BuscarTodos();
+            return View(mensalidades);
         }
 
         public IActionResult Cadastrar()
         {
+            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -33,10 +36,10 @@ namespace BanzaiTV.Controllers
             _mensalidadeService.Cadastrar(mensalidade);
             return RedirectToAction("Index", "Mensalidade");
         }
-        public IActionResult Editar()
+        public IActionResult Editar(int id)
         {
             if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
-            return View();
+            return View(_mensalidadeService.BuscaPorId(id));
         }
 
         [HttpPost]

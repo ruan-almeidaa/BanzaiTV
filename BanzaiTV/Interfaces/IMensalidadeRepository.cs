@@ -7,5 +7,6 @@ namespace BanzaiTV.Interfaces
         MensalidadeModel Cadastrar(MensalidadeModel mensalidade);
         MensalidadeModel Editar(MensalidadeModel mensalidade);
         MensalidadeModel BuscaPorId(int id);
+        List<MensalidadeModel> BuscarTodos();
     }
 }

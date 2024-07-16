@@ -24,6 +24,19 @@ namespace BanzaiTV.Services
 			}
         }
 
+        public List<MensalidadeModel> BuscarTodos()
+        {
+			try
+			{
+				return _mensalidadeRepository.BuscarTodos();
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
         public MensalidadeModel Cadastrar(MensalidadeModel mensalidade)
 			{
 				try
