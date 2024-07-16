@@ -33,6 +33,20 @@ namespace BanzaiTV.Controllers
             _mensalidadeService.Cadastrar(mensalidade);
             return RedirectToAction("Index", "Mensalidade");
         }
+        public IActionResult Editar()
+        {
+            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Editar(MensalidadeModel mensalidade)
+        {
+            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+            _mensalidadeService.Editar(mensalidade);
+            return RedirectToAction("Index", "Mensalidade");
+
+        }
 
     }
 }

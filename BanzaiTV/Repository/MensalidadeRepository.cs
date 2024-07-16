@@ -12,11 +12,40 @@ namespace BanzaiTV.Repository
         {
             _bancoContext = bancoContext;
         }
+
+        public MensalidadeModel BuscaPorId(int id)
+        {
+            try
+            {
+                return _bancoContext.Mensalidades.Find(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public MensalidadeModel Cadastrar(MensalidadeModel mensalidade)
         {
             try
             {
                 _bancoContext.Mensalidades.Add(mensalidade);
+                _bancoContext.SaveChanges();
+                return mensalidade;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public MensalidadeModel Editar(MensalidadeModel mensalidade)
+        {
+            try
+            {
+                _bancoContext.ChangeTracker.Clear();
+                _bancoContext.Mensalidades.Update(mensalidade);
                 _bancoContext.SaveChanges();
                 return mensalidade;
             }

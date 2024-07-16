@@ -11,7 +11,20 @@ namespace BanzaiTV.Services
 			_mensalidadeRepository = mensalidadeRepository;
 		}
 
-			public MensalidadeModel Cadastrar(MensalidadeModel mensalidade)
+        public MensalidadeModel BuscaPorId(int id)
+        {
+			try
+			{
+				return _mensalidadeRepository.BuscaPorId(id);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+        public MensalidadeModel Cadastrar(MensalidadeModel mensalidade)
 			{
 				try
 				{
@@ -24,6 +37,22 @@ namespace BanzaiTV.Services
 					throw;
 				}
 			}
-	}
+
+        public MensalidadeModel Editar(MensalidadeModel mensalidade)
+        {
+			try
+			{
+				MensalidadeModel mensalidadeNoBanco = BuscaPorId(mensalidade.Id);
+				if (mensalidadeNoBanco == null) return null;
+				return _mensalidadeRepository.Editar(mensalidade);
+
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+    }
 }
 
