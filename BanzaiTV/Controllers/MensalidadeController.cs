@@ -1,6 +1,7 @@
 ﻿using BanzaiTV.Helper;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
+using BanzaiTV.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BanzaiTV.Controllers
@@ -48,6 +49,36 @@ namespace BanzaiTV.Controllers
             if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
             _mensalidadeService.Editar(mensalidade);
             return RedirectToAction("Index", "Mensalidade");
+
+        }
+
+        public IActionResult ConfirmaExcluir(int id)
+        {
+            try
+            {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                return View(_mensalidadeService.BuscaPorId(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public IActionResult Excluir(int id)
+        {
+            try
+            {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+
+                _mensalidadeService.Excluir(id);
+                return RedirectToAction("Index", "Mensalidade");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 

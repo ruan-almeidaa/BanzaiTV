@@ -1,0 +1,19 @@
+﻿@model MensalidadeModel
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Excluir mensalidade</h5>
+        </div>
+        <div class="modal-body">
+            <p>Confirma a exclusão da mensalidade?</p>
+        </div>
+        <input readonly type="hidden" asp-for"id" />
+
+        <div class="modal-footer">
+            <a role="button" class="btn btn-danger" asp-controller="Mensalidade" asp-action="Excluir" asp-route-id="@Model.Id">Excluir</a>
+            <a role="button" class="btn btn-primary" href="/Mensalidade">Voltar</a>
+        </div>
+    </div>
+</div>

@@ -68,5 +68,20 @@ namespace BanzaiTV.Repository
                 throw;
             }
         }
+
+        public bool Excluir(MensalidadeModel mensalidade)
+        {
+            try
+            {
+                _bancoContext.Mensalidades.Remove(mensalidade);
+                _bancoContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
