@@ -2,6 +2,7 @@
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 using BanzaiTV.Services;
+using BanzaiTV.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BanzaiTV.Controllers
@@ -10,9 +11,11 @@ namespace BanzaiTV.Controllers
     {
         private readonly IMensalidadeService _mensalidadeService;
         private readonly ISessao _sessao;
+        private readonly IMensalidadeViewModelService _mensalidadeViewModelService;
 
-        public MensalidadeController(IMensalidadeService mensalidadeService, ISessao sessao)
+        public MensalidadeController(IMensalidadeService mensalidadeService, IMensalidadeViewModelService mensalidadeViewModelService, ISessao sessao)
         {
+            _mensalidadeViewModelService = mensalidadeViewModelService;
             _mensalidadeService = mensalidadeService;
             _sessao = sessao;
         }
@@ -27,7 +30,8 @@ namespace BanzaiTV.Controllers
         public IActionResult Cadastrar()
         {
             if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
-            return View();
+            MensalidadeViewModel mensalidadeViewModel = _mensalidadeViewModelService.CarregaViewCadastrar();
+            return View(mensalidadeViewModel);
         }
 
         [HttpPost]

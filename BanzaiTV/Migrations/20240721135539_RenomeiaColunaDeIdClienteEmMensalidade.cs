@@ -5,17 +5,15 @@
 namespace BanzaiTV.Migrations
 {
     /// <inheritdoc />
-    public partial class CriadaFkDeClienteNaMensalidade : Migration
+    public partial class RenomeiaColunaDeIdClienteEmMensalidade : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "ClienteId",
+            migrationBuilder.RenameColumn(
+                name: "IdCliente",
                 table: "Mensalidades",
-                type: "integer",
-                nullable: false,
-                defaultValue: 0);
+                newName: "ClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Mensalidades_ClienteId",
@@ -42,9 +40,10 @@ namespace BanzaiTV.Migrations
                 name: "IX_Mensalidades_ClienteId",
                 table: "Mensalidades");
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.RenameColumn(
                 name: "ClienteId",
-                table: "Mensalidades");
+                table: "Mensalidades",
+                newName: "IdCliente");
         }
     }
 }

@@ -97,9 +97,6 @@ namespace BanzaiTV.Migrations
                     b.Property<DateTimeOffset>("DataVencimento")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("integer");
-
                     b.Property<double>("Valor")
                         .HasColumnType("double precision");
 

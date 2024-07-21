@@ -1,4 +1,4 @@
-﻿@model MensalidadeModel;
+﻿@model BanzaiTV.ViewModel.MensalidadeViewModel
 
 <div class="container">
 
@@ -14,9 +14,11 @@
                 <div class="row">
                     <div class="col">
                         <label for="cliente" class="form-label">Cliente:*</label>
-                        <select asp-for="IdCliente" id="cliente" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option value="01">Ruan</option>
-                            <option value="02">Geromito</option>
+                        <select asp-for="ClienteId" id="cliente" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            @foreach(ClienteModel cliente in Model.ListaDeClientes)
+                            {
+                                <option value="@cliente.Id">@cliente.Nome</option>
+                            }
                         </select>
                     </div>
                     <div class="col">

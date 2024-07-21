@@ -31,6 +31,7 @@ builder.Services.AddScoped<IMensalidadeRepository, MensalidadeRepository>();
 builder.Services.AddScoped<IMensalidadeService, MensalidadeService>();
 builder.Services.AddScoped<ISessao, SessaoService>();
 builder.Services.AddScoped<IClienteViewModelService, ClienteViewModelService>();
+builder.Services.AddScoped<IMensalidadeViewModelService, MensalidadeViewModelService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

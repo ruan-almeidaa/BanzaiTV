@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BanzaiTV.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20240721024305_CriadaFkDeClienteNaMensalidade")]
-    partial class CriadaFkDeClienteNaMensalidade
+    [Migration("20240721135539_RenomeiaColunaDeIdClienteEmMensalidade")]
+    partial class RenomeiaColunaDeIdClienteEmMensalidade
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,9 +99,6 @@ namespace BanzaiTV.Migrations
 
                     b.Property<DateTimeOffset>("DataVencimento")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("integer");
 
                     b.Property<double>("Valor")
                         .HasColumnType("double precision");
