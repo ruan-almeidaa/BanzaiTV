@@ -32,6 +32,8 @@ builder.Services.AddScoped<IMensalidadeService, MensalidadeService>();
 builder.Services.AddScoped<ISessao, SessaoService>();
 builder.Services.AddScoped<IClienteViewModelService, ClienteViewModelService>();
 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 builder.Services.AddSession(o =>
 {
     o.Cookie.HttpOnly = true;

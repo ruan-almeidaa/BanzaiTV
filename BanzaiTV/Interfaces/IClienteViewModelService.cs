@@ -5,5 +5,6 @@ namespace BanzaiTV.Interfaces
     public interface IClienteViewModelService
     {
         ClienteViewModel CarregaViewCadastrar();
+        ClienteViewModel CarregaViewEditar(int id);
     }
 }

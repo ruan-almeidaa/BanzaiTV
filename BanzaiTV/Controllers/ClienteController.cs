@@ -67,7 +67,7 @@ namespace BanzaiTV.Controllers
             
             try
             {
-                ClienteModel cliente = _clienteService.BuscaPorId(id);
+                ClienteViewModel cliente = _clienteViewModelService.CarregaViewEditar(id);
                 if (_sessao.BuscarSessao() != null && cliente != null)
                 {
                     return View(cliente);
