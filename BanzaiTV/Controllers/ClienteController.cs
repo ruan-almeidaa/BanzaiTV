@@ -2,6 +2,7 @@
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 using BanzaiTV.Services;
+using BanzaiTV.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BanzaiTV.Controllers
@@ -10,10 +11,13 @@ namespace BanzaiTV.Controllers
     {
         private readonly IClienteService _clienteService;
         private readonly ISessao _sessao;
-        public ClienteController(IClienteService clienteService, ISessao sessao)
+        private readonly IClienteViewModelService _clienteViewModelService;
+
+        public ClienteController(IClienteService clienteService, ISessao sessao, IClienteViewModelService clienteViewModelService)
         {
             _clienteService = clienteService;
             _sessao = sessao;
+            _clienteViewModelService = clienteViewModelService;
         }
 
         public IActionResult Index()
@@ -33,7 +37,8 @@ namespace BanzaiTV.Controllers
         {
             if (_sessao.BuscarSessao() != null)
             {
-                return View();
+                ClienteViewModel clientePlanosViewModel = _clienteViewModelService.CarregaViewCadastrar();
+                return View(clientePlanosViewModel);
             }
             else
             {

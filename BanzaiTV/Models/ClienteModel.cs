@@ -10,6 +10,7 @@
         public required int DiaVencimento { get; set; }
         public required int PlanoId { get; set; }
         public required bool Ativo { get; set; }
+        public required PlanoModel Plano { get; set; }
 
     }
 }
