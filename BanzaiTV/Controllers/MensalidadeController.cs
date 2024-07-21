@@ -44,7 +44,7 @@ namespace BanzaiTV.Controllers
         public IActionResult Editar(int id)
         {
             if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
-            return View(_mensalidadeService.BuscaPorId(id));
+            return View(_mensalidadeViewModelService.CarregaViewEditar(id));
         }
 
         [HttpPost]

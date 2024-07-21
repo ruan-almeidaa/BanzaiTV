@@ -9,6 +9,7 @@ namespace BanzaiTV.Helper
         public MappingProfile()
         {
             CreateMap<ClienteModel, ClienteViewModel>();
+            CreateMap<MensalidadeModel, MensalidadeViewModel>();
         }
     }
 }
