@@ -32,7 +32,7 @@ namespace BanzaiTV.Repository
             try
             {
                 return _bancoContext.Mensalidades
-                                                .Where(m => m.ClienteId  == idCliente)
+                                                .Where(m => m.ClienteId  == idCliente && m.DataPagamento == null)
                                                 .ToList();
             }
             catch (Exception)
