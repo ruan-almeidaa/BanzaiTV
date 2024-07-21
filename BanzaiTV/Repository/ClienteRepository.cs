@@ -17,7 +17,9 @@ namespace BanzaiTV.Repository
 
         public List<ClienteModel> BuscarTodos()
         {
-            return _bancoContext.Clientes.ToList();
+            return _bancoContext.Clientes
+                                        .Include(c => c.Plano)
+                                        .ToList();
         }
 
         public ClienteModel Cadastrar(ClienteModel cliente)
