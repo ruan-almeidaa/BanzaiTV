@@ -1,6 +1,7 @@
 ﻿using BanzaiTV.Database;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BanzaiTV.Repository
 {
@@ -45,7 +46,9 @@ namespace BanzaiTV.Repository
         {
             try
             {
-                return _bancoContext.Mensalidades.ToList();
+                return _bancoContext.Mensalidades
+                                                .Include(m => m.Cliente)
+                                                .ToList();
             }
             catch (Exception)
             {
