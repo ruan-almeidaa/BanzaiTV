@@ -23,7 +23,8 @@ namespace BanzaiTV.Controllers
         public IActionResult Index()
         {
             if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
-            List<MensalidadeModel> mensalidades = _mensalidadeService.BuscarTodos();
+
+            List<MensalidadeViewModel> mensalidades = _mensalidadeViewModelService.CarregaViewIndex();
             return View(mensalidades);
         }
 

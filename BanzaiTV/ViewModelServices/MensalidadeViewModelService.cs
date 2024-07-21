@@ -49,5 +49,49 @@ namespace BanzaiTV.ViewModelServices
                 throw;
             }
         }
+
+        public List<MensalidadeViewModel> CarregaViewIndex()
+        {
+            try
+            {
+                List<MensalidadeModel> listaMensalidadesModel = _mensalidadeService.BuscarTodos();
+                List<MensalidadeViewModel> listaMensalidadesViewModel = new();
+
+                //Percorre toda a lista de MensalidadeModel convertendo para uma nova lista de MensalidadeViewModel
+                foreach (MensalidadeModel mensalidadeModel in listaMensalidadesModel)
+                {
+                    MensalidadeViewModel mensalidadeViewModel = new();
+                    mensalidadeViewModel = _mapper.Map<MensalidadeViewModel>(mensalidadeModel);
+                    listaMensalidadesViewModel.Add(mensalidadeViewModel);
+
+                }
+
+                return VerificaSeAtrasada(listaMensalidadesViewModel);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<MensalidadeViewModel> VerificaSeAtrasada(List<MensalidadeViewModel> mensalidadeViewModels)
+        {
+            try
+            {
+                foreach(MensalidadeViewModel mensalidade in mensalidadeViewModels)
+                {
+                    mensalidade.Atrasada = DateTime.Today > mensalidade.DataVencimento;
+                }
+
+                return mensalidadeViewModels;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
