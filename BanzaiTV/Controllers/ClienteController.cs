@@ -149,5 +149,18 @@ namespace BanzaiTV.Controllers
             }
 
         }
+        public IActionResult VerMais(int id)
+        {
+            try
+            {
+                if (_sessao.BuscarSessao == null) return View("Index", "Home");
+                return View(_clienteViewModelService.CarregaViewVerMais(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

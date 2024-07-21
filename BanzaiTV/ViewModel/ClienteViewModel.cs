@@ -5,6 +5,7 @@ namespace BanzaiTV.ViewModel
 {
     public class ClienteViewModel
     {
+        public int Id { get; set; }
         public string? Nome { get; set; }
         public string? Email { get; set; }
         public string? Celular { get; set; }
@@ -14,7 +15,7 @@ namespace BanzaiTV.ViewModel
         public bool Ativo { get; set; }
         public PlanoModel? Plano { get; set; }
         public List<PlanoModel>? ListaDePlanos { get; set; }
-        public List<MensalidadeModel>? Mensalidades { get; set; }
+        public List<MensalidadeModel>? ListaDeMensalidades { get; set; }
     }
 
 }

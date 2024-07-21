@@ -9,5 +9,6 @@ namespace BanzaiTV.Interfaces
         MensalidadeModel BuscaPorId(int id);
         List<MensalidadeModel> BuscarTodos();
         bool Excluir(MensalidadeModel mensalidade);
+        List<MensalidadeModel> BuscarMensalidadesDeCliente(int idCliente);
     }
 }

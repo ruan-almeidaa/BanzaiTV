@@ -79,6 +79,20 @@ namespace BanzaiTV.Services
 				throw;
 			}
         }
+
+		public List<MensalidadeModel> BuscarMensalidadesDeCliente(int idCliente)
+		{
+			try
+			{
+				return _mensalidadeRepository.BuscarMensalidadesDeCliente(idCliente);
+			}
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using BanzaiTV.Database;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BanzaiTV.Repository
 {
@@ -39,7 +40,9 @@ namespace BanzaiTV.Repository
         {
             try
             {
-                return _bancoContext.Clientes.Find(id);
+                return _bancoContext.Clientes
+                                            .Include(c => c.Plano)
+                                            .FirstOrDefault(c => c.Id == id);
             }
             catch (Exception)
             {

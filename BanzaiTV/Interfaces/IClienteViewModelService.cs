@@ -6,5 +6,6 @@ namespace BanzaiTV.Interfaces
     {
         ClienteViewModel CarregaViewCadastrar();
         ClienteViewModel CarregaViewEditar(int id);
+        ClienteViewModel CarregaViewVerMais(int id);
     }
 }

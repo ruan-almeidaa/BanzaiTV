@@ -1,0 +1,100 @@
+﻿@model BanzaiTV.ViewModel.ClienteViewModel
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="card-header">
+            <h4>Cadastro completo do cliente</h4>
+        </div>
+        <div class="card-body">
+                <div class="row">
+                    <div class="col align-content-center">
+                        <div class="form-check mb-3">
+                            <input readonly asp-for="Ativo" class="form-check-input" type="checkbox" id="ativo" checked />
+                            <label class="form-check-label" for="ativo">
+                                Cliente ativo
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label for="DiaVencimento" class="form-label">Dia do vencimento:</label>
+                        <input readonly type="number" asp-for="DiaVencimento" class="form-control" id="DiaVencimento">
+                    </div>
+
+                    <div class="col">
+                        <label for="plano" class="form-label">Plano:</label>
+                        <input readonly type="text" asp-for="PlanoId" class="form-control" id="plano" value="@Model.Plano.Titulo">
+                    </div>
+
+
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nome" class="form-label">Nome Completo *</label>
+                        <input readonly type="text" asp-for="Nome" class="form-control" id="nome">
+                    </div>
+                    <div class="col mb-3">
+                    <label for="cpf" class="form-label">CPF</label>
+                        <input readonly type="text" asp-for="Cpf" class="form-control" id="cpf" aria-describedby="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input readonly type="email" asp-for="Email" class="form-control" id="email" aria-describedby="emailHelp">
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="celular" class="form-label">Celular</label>
+                        <input readonly type="tel" asp-for="Celular" class="form-control" id="celular" aria-describedby="">
+                    </div>
+                </div>
+
+                <div>
+                    <a role="button" class="btn btn-primary" asp-route-id="@Model.Id" asp-controller="Cliente" asp-action="Editar">Editar</a>
+                    <a role="button" class="btn btn-danger" asp-route-id="@Model.Id" asp-controller="Cliente" asp-action="ConfirmaExcluir">Excluir</a>
+                </div>
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Mensalidades do cliente</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Vencimento</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.ListaDeMensalidades != null)
+                    {
+                        foreach (MensalidadeModel mensalidade in Model.ListaDeMensalidades)
+                        {
+                            <tr>
+                                <td>@mensalidade.DataVencimento</td>
+                                <td>R$ @mensalidade.Valor</td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
