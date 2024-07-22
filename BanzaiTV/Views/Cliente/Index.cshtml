@@ -26,17 +26,17 @@
                         foreach(ClienteModel cliente in Model)
                         {
                             <tr>
-                                <th scope="row">@cliente.Nome</th>
-                                <th>@cliente.Plano.Titulo</th>
-                                <th>@cliente.DiaVencimento</th>
-                                <th>
+                                <td>@cliente.Nome</td>
+                                <td>@cliente.Plano.Titulo</td>
+                                <td>@cliente.DiaVencimento.ToString("D2")</td>
+                                <td>
                                     <div>
                                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver cadastro" role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="VerMais"><i class="fa-solid fa-circle-info"></i></a>
                                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar"><i class="fa-solid fa-square-pen"></i></a>
                                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" role="button" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="ConfirmaExcluir"><i class="fa-solid fa-square-xmark"></i></a>
                                     </div>
 
-                            </th>
+                            </td>
                             </tr>
                         }
                     }
