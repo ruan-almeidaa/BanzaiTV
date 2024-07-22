@@ -20,30 +20,65 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Administrador" asp-action="Index">
-                            <i class="fa-solid fa-house"></i> Início
-                        </a>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="index">
-                                <i class="fa-solid fa-users"></i> Clientes
-
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Administrador" asp-action="Index"> Início</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="clientesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-people"></i> Clientes
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="clientesDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="Index">
+                                        <i class="fa-solid fa-list"></i> Listar todos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Cliente" asp-action="Cadastrar">
+                                        <i class="fa-solid fa-square-plus"></i> Cadastrar
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Plano" asp-action="index">
-                                <i class="fa-solid fa-folder"></i> Planos
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="planosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-calendar"></i> Planos
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="planosDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Plano" asp-action="Index">
+                                        <i class="fa-solid fa-list"></i> Listar todos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Plano" asp-action="Cadastrar">
+                                        <i class="fa-solid fa-square-plus"></i> Cadastrar
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Mensalidade" asp-action="Index">
-                                <i class="fa-solid fa-filter-circle-dollar"></i> Mensalidades
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="mensalidadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-cash"></i> Mensalidades
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="mensalidadesDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Mensalidade" asp-action="Index">
+                                        <i class="fa-solid fa-list"></i> Listar todos
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Mensalidade" asp-action="Cadastrar">
+                                        <i class="fa-solid fa-square-plus"></i> Cadastrar
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Administrador" asp-action="Sair">
+                        <div class="ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Administrador" asp-action="Sair">
                                 <i class="fa-solid fa-square-arrow-up-right"></i> Sair
-                            </a>
-                        </li>
+                                </a>
+                            </li>
+                        </div>
+
                     </ul>
                 </div>
             </div>
