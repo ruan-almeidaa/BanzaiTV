@@ -20,20 +20,29 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Administrador" asp-action="Index">
+                            <i class="fa-solid fa-house"></i> Início
+                        </a>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Início</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="index">
+                                <i class="fa-solid fa-users"></i> Clientes
+
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="index">Clientes</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Plano" asp-action="index">
+                                <i class="fa-solid fa-folder"></i> Planos
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Plano" asp-action="index">Planos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Mensalidade" asp-action="Index">
+                                <i class="fa-solid fa-filter-circle-dollar"></i> Mensalidades
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Mensalidade" asp-action="Index">Mensalidades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Administrador" asp-action="Sair">Sair</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Administrador" asp-action="Sair">
+                                <i class="fa-solid fa-square-arrow-up-right"></i> Sair
+                            </a>
                         </li>
                     </ul>
                 </div>
