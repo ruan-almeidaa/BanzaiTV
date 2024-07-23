@@ -3,7 +3,7 @@ using BanzaiTV.Models;
 
 namespace BanzaiTV.Services
 {
-	public class MensalidadeService : IMensalidadeService
+    public class MensalidadeService : IMensalidadeService
 	{
 		private readonly IMensalidadeRepository _mensalidadeRepository;
 		public MensalidadeService(IMensalidadeRepository mensalidadeRepository)
@@ -91,6 +91,41 @@ namespace BanzaiTV.Services
 
                 throw;
             }
+
+        }
+
+		public void LancarMensalidadesDoCliente(ClienteModel cliente)
+		{
+
+			try
+			{
+                int mensalidadesCriadas = 1;
+                DateTime dataAtual = DateTime.Now;
+
+
+				do
+                {
+					//Inicializa a primeira mensalidade, gerando ela para o próximo mês.E Conforme for criando as mensalidades, precisa ir incrementando os meses.
+                    DateTime dataComUmMes = dataAtual.AddMonths(mensalidadesCriadas);
+                    DateTime dataMensalidadeDiaCliente = new DateTime(dataComUmMes.Year, dataComUmMes.Month, cliente.DiaVencimento);
+
+                    MensalidadeModel mensalidadeAhSerCriada = new()
+                    {
+                        ClienteId = cliente.Id,
+                        DataVencimento = dataMensalidadeDiaCliente,
+                        Valor = cliente.Plano.valor,
+                        Cliente = cliente
+                    };
+                    Cadastrar(mensalidadeAhSerCriada);
+                    mensalidadesCriadas++;
+                } while (cliente.Plano.mesesDuracao >= mensalidadesCriadas);
+            }
+			catch (Exception)
+			{
+
+				throw;
+			}
+
 
         }
     }

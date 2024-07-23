@@ -6,10 +6,12 @@ namespace BanzaiTV.Services
     public class ClienteService : IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
+        private readonly IMensalidadeService _mensalidadeService;
 
-        public ClienteService(IClienteRepository clienteRepository)
+        public ClienteService(IClienteRepository clienteRepository, IMensalidadeService mensalidadeService)
         {
             _clienteRepository = clienteRepository;
+            _mensalidadeService = mensalidadeService;
         }
 
         public List<ClienteModel> BuscarTodos()
@@ -29,7 +31,9 @@ namespace BanzaiTV.Services
         {
             try
             {
-                return _clienteRepository.Cadastrar(cliente);
+                ClienteModel clienteCadastrado = _clienteRepository.Cadastrar(cliente);
+                _mensalidadeService.LancarMensalidadesDoCliente(BuscaPorId(clienteCadastrado.Id));
+                return clienteCadastrado;
             }
             catch (Exception)
             {
@@ -57,14 +61,7 @@ namespace BanzaiTV.Services
             {
                 ClienteModel clienteNoBanco = BuscaPorId(cliente.Id);
 
-                if(clienteNoBanco != null)
-                {
-                    return _clienteRepository.Editar(cliente);
-                }
-                else
-                {
-                    return null;
-                }
+                 return _clienteRepository.Editar(cliente);
             }
             catch
             {
