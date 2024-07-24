@@ -36,7 +36,7 @@ namespace BanzaiTV.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("senha")
+                    b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("text");
 

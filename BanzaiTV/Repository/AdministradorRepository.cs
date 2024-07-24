@@ -14,7 +14,7 @@ namespace BanzaiTV.Repository
         public AdministradorModel Logar(AdministradorModel p_administradorModel)
         {
             return _bancoContext.Administrador.FirstOrDefault
-                (a => a.Email == p_administradorModel.Email && a.senha == p_administradorModel.senha);
+                (a => a.Email == p_administradorModel.Email && a.Senha == p_administradorModel.Senha);
             
         }
     }

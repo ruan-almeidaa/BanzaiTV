@@ -15,7 +15,7 @@ namespace BanzaiTV.Services
 
         public AdministradorModel Logar(AdministradorModel administrador)
         {
-            administrador.senha = Criptografia.GerarHash(administrador.senha);
+            administrador.Senha = Criptografia.GerarHash(administrador.Senha);
 
             return _administradorRepository.Logar(administrador);
         }

@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public required string Email { get; set; }
-        public required string senha { get; set; }
+        public required string Senha { get; set; }
     }
 }

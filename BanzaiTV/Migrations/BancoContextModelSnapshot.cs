@@ -34,13 +34,13 @@ namespace BanzaiTV.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("senha")
+                    b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Administrador");
+                    b.ToTable("Administrador", (string)null);
                 });
 
             modelBuilder.Entity("BanzaiTV.Models.ClienteModel", b =>
@@ -77,7 +77,7 @@ namespace BanzaiTV.Migrations
 
                     b.HasIndex("PlanoId");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("Clientes", (string)null);
                 });
 
             modelBuilder.Entity("BanzaiTV.Models.MensalidadeModel", b =>
@@ -104,7 +104,7 @@ namespace BanzaiTV.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.ToTable("Mensalidades");
+                    b.ToTable("Mensalidades", (string)null);
                 });
 
             modelBuilder.Entity("BanzaiTV.Models.PlanoModel", b =>
@@ -127,7 +127,7 @@ namespace BanzaiTV.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Planos");
+                    b.ToTable("Planos", (string)null);
                 });
 
             modelBuilder.Entity("BanzaiTV.Models.ClienteModel", b =>
