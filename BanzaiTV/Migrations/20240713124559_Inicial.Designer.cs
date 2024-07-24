@@ -92,10 +92,10 @@ namespace BanzaiTV.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("mesesDuracao")
+                    b.Property<int>("MesesDuracao")
                         .HasColumnType("integer");
 
-                    b.Property<double>("valor")
+                    b.Property<double>("Valor")
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");

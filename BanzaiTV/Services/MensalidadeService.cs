@@ -113,12 +113,12 @@ namespace BanzaiTV.Services
                     {
                         ClienteId = cliente.Id,
                         DataVencimento = dataMensalidadeDiaCliente,
-                        Valor = cliente.Plano.valor,
+                        Valor = cliente.Plano.Valor,
                         Cliente = cliente
                     };
                     Cadastrar(mensalidadeAhSerCriada);
                     mensalidadesCriadas++;
-                } while (cliente.Plano.mesesDuracao >= mensalidadesCriadas);
+                } while (cliente.Plano.MesesDuracao >= mensalidadesCriadas);
             }
 			catch (Exception)
 			{
