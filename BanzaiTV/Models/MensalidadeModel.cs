@@ -8,5 +8,6 @@
         public required Double Valor { get; set; }
         public DateTime? DataPagamento { get; set; }
         public required ClienteModel Cliente { get; set; }
+        public bool Atrasada { get; set; }
     }
 }
