@@ -18,9 +18,10 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var provider = builder.Services.BuildServiceProvider();
-var configuration = provider.GetService<IConfiguration>();
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<BancoContext>(o => o.UseNpgsql(configuration.GetConnectionString("Database")));
+// Configure Entity Framework
+builder.Services.AddEntityFrameworkNpgsql()
+    .AddDbContext<BancoContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("Database")));
 
 // Configura Hangfire PostgreSQL
 builder.Services.AddHangfire(configuration => configuration
@@ -56,7 +57,7 @@ builder.Services.AddSession(o =>
 var app = builder.Build();
 
 app.UseHangfireDashboard();
-app.UseHangfireServer();
+builder.Services.AddHangfireServer();
 
 var hangfire = app.Services.GetService<BanzaiTV.Helper.HangfireCfg.Hangfire>();
 
