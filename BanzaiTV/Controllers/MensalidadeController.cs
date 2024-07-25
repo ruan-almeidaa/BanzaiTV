@@ -1,4 +1,4 @@
-﻿using BanzaiTV.Helper;
+﻿using BanzaiTV.Helper.Sessao;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 using BanzaiTV.Services;

@@ -2,7 +2,7 @@
 using BanzaiTV.Models;
 using BanzaiTV.ViewModel;
 
-namespace BanzaiTV.Helper
+namespace BanzaiTV.Helper.AutoMapperCfg
 {
     public class MappingProfile : Profile
     {

@@ -1,5 +1,6 @@
 using BanzaiTV.Database;
-using BanzaiTV.Helper;
+using BanzaiTV.Helper.AutoMapperCfg;
+using BanzaiTV.Helper.Sessao;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Repository;
 using BanzaiTV.Services;
@@ -44,7 +45,7 @@ builder.Services.AddScoped<IMensalidadeViewModelService, MensalidadeViewModelSer
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddHangfireServer();
-builder.Services.AddSingleton<BanzaiTV.Helper.Hangfire>();
+builder.Services.AddSingleton<BanzaiTV.Helper.HangfireCfg.Hangfire>();
 
 builder.Services.AddSession(o =>
 {
@@ -57,7 +58,7 @@ var app = builder.Build();
 app.UseHangfireDashboard();
 app.UseHangfireServer();
 
-var hangfire = app.Services.GetService<BanzaiTV.Helper.Hangfire>();
+var hangfire = app.Services.GetService<BanzaiTV.Helper.HangfireCfg.Hangfire>();
 
 // Schedule the job to run daily
 RecurringJob.AddOrUpdate(() => hangfire.UpdateMensalidade(), Cron.Daily);

@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace BanzaiTV.Helper
+namespace BanzaiTV.Helper.CriptografiaCfg
 {
     public static class Criptografia
     {

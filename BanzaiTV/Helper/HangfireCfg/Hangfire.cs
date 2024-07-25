@@ -1,7 +1,7 @@
 ﻿using BanzaiTV.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace BanzaiTV.Helper
+namespace BanzaiTV.Helper.HangfireCfg
 {
     public class Hangfire
     {

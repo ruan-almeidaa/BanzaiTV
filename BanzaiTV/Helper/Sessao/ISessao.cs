@@ -1,6 +1,6 @@
 ﻿using BanzaiTV.Models;
 
-namespace BanzaiTV.Helper
+namespace BanzaiTV.Helper.Sessao
 {
     public interface ISessao
     {

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.Globalization;
 using System.Text.Json.Serialization;
 
-namespace BanzaiTV.Helper
+namespace BanzaiTV.Helper.Sessao
 {
     public class SessaoService : ISessao
     {

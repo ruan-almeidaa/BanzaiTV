@@ -1,4 +1,4 @@
-﻿using BanzaiTV.Helper;
+﻿using BanzaiTV.Helper.CriptografiaCfg;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 
