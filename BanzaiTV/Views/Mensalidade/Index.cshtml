@@ -1,4 +1,5 @@
 ﻿@model List<BanzaiTV.ViewModel.MensalidadeViewModel>;
+@using BanzaiTV.Enums.MensalidadesEnums;
 
 <div class="container">
 
@@ -12,7 +13,7 @@
             <h4>Lista de mensalidades</h4>
         </div>
         <div class="card-body">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Cliente</th>
@@ -27,16 +28,23 @@
                     {
                         foreach (var mensalidade in Model)
                         {
-                            <tr class=" @(mensalidade.Atrasada ? "table-warning" : " ")">
+                            <tr>
                                 <td>@mensalidade.Cliente.Nome</td>
                                 <td>@(mensalidade.DataVencimento != null ? mensalidade.DataVencimento.Value.ToString("dd/MM/yyyy") : "Data não disponível")</td>
-                                <td>@mensalidade.Valor</td>
+                                <td>R$ @mensalidade.Valor</td>
                                 <td>
-                                    @if (mensalidade.Atrasada)
+                                    @if (mensalidade.Status == StatusEnum.Atrasada)
                                     {
-                                        <span class="badge rounded-pill bg-danger">Atrasada</span>
+                                        <span class="badge rounded-pill bg-warning text-dark">Atrasada</span>
+                                    }
+                                    else if (mensalidade.Status == StatusEnum.Paga)
+                                    {
+                                        <span class="badge rounded-pill bg-secondary">Paga</span>
+                                    }else{
+                                        <span class="badge rounded-pill bg-info text-dark">Pendente</span>
                                     }
                                 </td>
+                                    
                                 <td>
                                     <div>
                                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" role="button" class="me-2" asp-route-id="@mensalidade.Id" asp-controller="Mensalidade" asp-action="Editar"><i class="fa-solid fa-square-pen"></i></a>

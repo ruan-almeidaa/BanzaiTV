@@ -66,26 +66,8 @@ namespace BanzaiTV.ViewModelServices
 
                 }
 
-                return VerificaSeAtrasada(listaMensalidadesViewModel);
+                return listaMensalidadesViewModel;
 
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public List<MensalidadeViewModel> VerificaSeAtrasada(List<MensalidadeViewModel> mensalidadeViewModels)
-        {
-            try
-            {
-                foreach(MensalidadeViewModel mensalidade in mensalidadeViewModels)
-                {
-                    mensalidade.Atrasada = DateTime.Today > mensalidade.DataVencimento;
-                }
-
-                return mensalidadeViewModels;
             }
             catch (Exception)
             {

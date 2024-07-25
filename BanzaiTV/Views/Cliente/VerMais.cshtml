@@ -1,4 +1,5 @@
 ﻿@model BanzaiTV.ViewModel.ClienteViewModel
+@using BanzaiTV.Enums.MensalidadesEnums;
 
 <div class="container">
 
@@ -75,6 +76,7 @@
                     <tr>
                         <th scope="col">Vencimento</th>
                         <th scope="col">Valor</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,8 +85,23 @@
                         foreach (MensalidadeModel mensalidade in Model.ListaDeMensalidades)
                         {
                             <tr>
-                                <td>@mensalidade.DataVencimento</td>
+                                <td>@mensalidade.DataVencimento.ToString("dd/MM/yyyy")</td>
+
                                 <td>R$ @mensalidade.Valor</td>
+                                <td>
+                                    @if (mensalidade.Status == StatusEnum.Atrasada)
+                                    {
+                                        <span class="badge rounded-pill bg-warning text-dark">Atrasada</span>
+                                    }
+                                    else if (mensalidade.Status == StatusEnum.Paga)
+                                    {
+                                        <span class="badge rounded-pill bg-secondary">Paga</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge rounded-pill bg-info text-dark">Pendente</span>
+                                    }
+                                </td>
                             </tr>
                         }
                     }

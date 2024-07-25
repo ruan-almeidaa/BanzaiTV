@@ -1,4 +1,5 @@
-﻿using BanzaiTV.Models;
+﻿using BanzaiTV.Enums.MensalidadesEnums;
+using BanzaiTV.Models;
 
 namespace BanzaiTV.ViewModel
 {
@@ -12,7 +13,7 @@ namespace BanzaiTV.ViewModel
             public ClienteModel? Cliente { get; set; }
 
             public List<ClienteModel>? ListaDeClientes { get; set; }
-            public bool Atrasada { get; set; } 
+            public StatusEnum? Status { get; set; } 
 
     }
 }
