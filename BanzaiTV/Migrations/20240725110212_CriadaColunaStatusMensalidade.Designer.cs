@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BanzaiTV.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20240724225920_CriaCampoDeMensalidadeAtrasada")]
-    partial class CriaCampoDeMensalidadeAtrasada
+    [Migration("20240725110212_CriadaColunaStatusMensalidade")]
+    partial class CriadaColunaStatusMensalidade
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,9 +91,6 @@ namespace BanzaiTV.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Atrasada")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("ClienteId")
                         .HasColumnType("integer");
 
@@ -102,6 +99,9 @@ namespace BanzaiTV.Migrations
 
                     b.Property<DateTimeOffset>("DataVencimento")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("integer");
 
                     b.Property<double>("Valor")
                         .HasColumnType("double precision");

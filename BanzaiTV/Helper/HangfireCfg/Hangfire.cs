@@ -17,7 +17,7 @@ namespace BanzaiTV.Helper.HangfireCfg
             using (var scope = _serviceProvider.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<BancoContext>();
-                dbContext.Database.ExecuteSqlRaw("UPDATE \"Mensalidades\" SET \"Atrasada\" = TRUE WHERE CURRENT_TIMESTAMP > \"DataVencimento\" AND \"DataPagamento\" IS NULL;");
+                dbContext.Database.ExecuteSqlRaw("UPDATE \"Mensalidades\" SET \"Status\" = 3 WHERE CURRENT_TIMESTAMP > \"DataVencimento\" AND \"DataPagamento\" IS NULL;");
             }
         }
     }

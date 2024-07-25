@@ -5,24 +5,23 @@
 namespace BanzaiTV.Migrations
 {
     /// <inheritdoc />
-    public partial class CriaCampoDeMensalidadeAtrasada : Migration
+    public partial class CriadaColunaStatusMensalidade : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "Atrasada",
+            migrationBuilder.AddColumn<int>(
+                name: "Status",
                 table: "Mensalidades",
-                type: "boolean",
-                nullable: false,
-                defaultValue: false);
+                type: "integer",
+                nullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Atrasada",
+                name: "Status",
                 table: "Mensalidades");
         }
     }

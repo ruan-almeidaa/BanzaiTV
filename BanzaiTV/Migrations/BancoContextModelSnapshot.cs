@@ -88,9 +88,6 @@ namespace BanzaiTV.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Atrasada")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("ClienteId")
                         .HasColumnType("integer");
 
@@ -99,6 +96,9 @@ namespace BanzaiTV.Migrations
 
                     b.Property<DateTimeOffset>("DataVencimento")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("integer");
 
                     b.Property<double>("Valor")
                         .HasColumnType("double precision");
