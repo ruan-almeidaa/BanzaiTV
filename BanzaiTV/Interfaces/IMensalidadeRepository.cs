@@ -1,4 +1,5 @@
-﻿using BanzaiTV.Models;
+﻿using BanzaiTV.Enums.MensalidadesEnums;
+using BanzaiTV.Models;
 
 namespace BanzaiTV.Interfaces
 {
@@ -10,5 +11,6 @@ namespace BanzaiTV.Interfaces
         List<MensalidadeModel> BuscarTodos();
         bool Excluir(MensalidadeModel mensalidade);
         List<MensalidadeModel> BuscarMensalidadesDeCliente(int idCliente);
+        bool AtualizarStatus(MensalidadeModel mensalidade);
     }
 }

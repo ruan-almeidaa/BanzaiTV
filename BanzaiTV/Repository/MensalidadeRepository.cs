@@ -1,4 +1,5 @@
 ﻿using BanzaiTV.Database;
+using BanzaiTV.Enums.MensalidadesEnums;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,22 @@ namespace BanzaiTV.Repository
         public MensalidadeRepository(BancoContext bancoContext)
         {
             _bancoContext = bancoContext;
+        }
+
+        public bool AtualizarStatus (MensalidadeModel mensalidade)
+        {
+            try
+            {
+                _bancoContext.ChangeTracker.Clear();
+                _bancoContext.Entry(mensalidade).Property(m => m.Status).IsModified = true;
+                _bancoContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public MensalidadeModel BuscaPorId(int id)

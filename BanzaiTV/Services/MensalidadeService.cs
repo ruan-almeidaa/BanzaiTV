@@ -1,4 +1,5 @@
-﻿using BanzaiTV.Interfaces;
+﻿using BanzaiTV.Enums.MensalidadesEnums;
+using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 
 namespace BanzaiTV.Services
@@ -41,7 +42,8 @@ namespace BanzaiTV.Services
 			{
 				try
 				{
-				return _mensalidadeRepository.Cadastrar(mensalidade);
+                mensalidade.Status = VerificarStatus(mensalidade);
+                return _mensalidadeRepository.Cadastrar(mensalidade);
 
 				}
 				catch (Exception)
@@ -55,8 +57,7 @@ namespace BanzaiTV.Services
         {
 			try
 			{
-				MensalidadeModel mensalidadeNoBanco = BuscaPorId(mensalidade.Id);
-				if (mensalidadeNoBanco == null) return null;
+				mensalidade.Status = VerificarStatus(mensalidade);
 				return _mensalidadeRepository.Editar(mensalidade);
 
 			}
@@ -128,6 +129,37 @@ namespace BanzaiTV.Services
 
 
         }
+		public StatusEnum VerificarStatus(MensalidadeModel mensalidade)
+		{
+			try
+			{
+				if (mensalidade.DataPagamento == null && DateTimeOffset.UtcNow > mensalidade.DataVencimento) return StatusEnum.Atrasada;
+				if (mensalidade.DataPagamento != null) return StatusEnum.Paga;
+				return StatusEnum.Pendente;
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
+
+		public bool AtualizarStatus(MensalidadeModel mensalidade)
+		{
+			try
+			{
+				StatusEnum novoStatus = VerificarStatus(mensalidade);
+				if(novoStatus == mensalidade.Status) return false;
+				mensalidade.Status = novoStatus;
+				return _mensalidadeRepository.AtualizarStatus(mensalidade);
+            }
+			catch (Exception)
+			{
+
+				throw;
+			}
+
+		}
     }
 }
 
