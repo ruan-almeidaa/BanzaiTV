@@ -9,5 +9,6 @@ namespace BanzaiTV.Interfaces
         ClienteModel BuscaPorId(int id);
         ClienteModel Editar(ClienteModel cliente);
         bool Excluir(int id);
+        void AlterarPlano(ClienteModel cliente);
     }
 }

@@ -14,5 +14,7 @@ namespace BanzaiTV.Interfaces
         void LancarMensalidadesDoCliente(ClienteModel cliente);
         StatusEnum VerificarStatus(MensalidadeModel mensalidade);
         bool AtualizarStatus(MensalidadeModel mensalidade);
+        void RecriarMensalidadesDoCliente(ClienteModel cliente);
+        void ExcluirMensalidadesDoCliente(ClienteModel cliente, StatusEnum? status);
     }
 }

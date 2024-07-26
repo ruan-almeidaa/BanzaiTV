@@ -47,6 +47,7 @@ builder.Services.AddScoped<IMensalidadeViewModelService, MensalidadeViewModelSer
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddHangfireServer();
 builder.Services.AddSingleton<BanzaiTV.Helper.HangfireCfg.Hangfire>();
+builder.Services.AddHangfireServer();
 
 builder.Services.AddSession(o =>
 {
@@ -57,7 +58,7 @@ builder.Services.AddSession(o =>
 var app = builder.Build();
 
 app.UseHangfireDashboard();
-builder.Services.AddHangfireServer();
+
 
 var hangfire = app.Services.GetService<BanzaiTV.Helper.HangfireCfg.Hangfire>();
 

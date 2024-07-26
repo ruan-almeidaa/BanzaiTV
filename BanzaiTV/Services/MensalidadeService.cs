@@ -160,6 +160,36 @@ namespace BanzaiTV.Services
 			}
 
 		}
+
+        public void RecriarMensalidadesDoCliente(ClienteModel cliente)
+        {
+			try
+			{
+				ExcluirMensalidadesDoCliente(cliente, null);
+                LancarMensalidadesDoCliente(cliente);
+
+            }
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+		public void ExcluirMensalidadesDoCliente(ClienteModel cliente, StatusEnum? status)
+        {
+			try
+			{
+				if(status == null) _mensalidadeRepository.ExcluirTodasMensalidadesDoCliente(cliente);
+				//Por enquanto esse método apaga todas as mensalidades, mas será evoluído para filtrar por status.
+
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
     }
 }
 

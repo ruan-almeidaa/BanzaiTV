@@ -12,5 +12,6 @@ namespace BanzaiTV.Interfaces
         bool Excluir(MensalidadeModel mensalidade);
         List<MensalidadeModel> BuscarMensalidadesDeCliente(int idCliente);
         bool AtualizarStatus(MensalidadeModel mensalidade);
+        void ExcluirTodasMensalidadesDoCliente(ClienteModel cliente);
     }
 }

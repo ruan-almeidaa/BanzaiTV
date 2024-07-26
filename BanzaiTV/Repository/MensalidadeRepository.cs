@@ -118,5 +118,27 @@ namespace BanzaiTV.Repository
                 throw;
             }
         }
+
+        public void ExcluirTodasMensalidadesDoCliente(ClienteModel cliente)
+        {
+            try
+            {
+                //Busca todas as mensalidades do cliente
+                List <MensalidadeModel> mensalidadesParaExcluir = _bancoContext.Mensalidades
+                                                                        .Where(m => m.ClienteId == cliente.Id)
+                                                                        .ToList();
+
+                // Remove as mensalidades do contexto
+                _bancoContext.Mensalidades.RemoveRange(mensalidadesParaExcluir);
+
+                // Salva as alterações no banco de dados
+                _bancoContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

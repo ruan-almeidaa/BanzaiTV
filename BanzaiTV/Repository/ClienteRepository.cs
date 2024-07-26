@@ -28,7 +28,9 @@ namespace BanzaiTV.Repository
             {
                 _bancoContext.Clientes.Add(cliente);
                 _bancoContext.SaveChanges();
-                return cliente;
+                return _bancoContext.Clientes
+                            .Include(c => c.Plano)
+                            .FirstOrDefault(c => c.Id == cliente.Id);
             }
             catch (Exception)
             {
@@ -60,7 +62,9 @@ namespace BanzaiTV.Repository
                 _bancoContext.ChangeTracker.Clear();
                 _bancoContext.Clientes.Update(cliente);
                 _bancoContext.SaveChanges();
-                return cliente;
+                return _bancoContext.Clientes
+                                            .Include(c => c.Plano)
+                                            .FirstOrDefault(c => c.Id == cliente.Id);
             }
             catch (Exception)
             {
