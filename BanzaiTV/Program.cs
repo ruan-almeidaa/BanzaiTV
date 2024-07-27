@@ -62,8 +62,10 @@ app.UseHangfireDashboard();
 
 var hangfire = app.Services.GetService<BanzaiTV.Helper.HangfireCfg.Hangfire>();
 
-// Schedule the job to run daily
-RecurringJob.AddOrUpdate(() => hangfire.UpdateMensalidade(), Cron.Daily);
+// Uma vez ao dia, o Hangfire reliza update nas mensalidades atrasadas.
+RecurringJob.AddOrUpdate(() => hangfire.AtualizarStatusMensalidadesAtrasadas(), Cron.Daily);
+//Uma vez ao mês, o Hangfire realiza update atualizando o status dos clientes que precisam de renovação.
+RecurringJob.AddOrUpdate(() => hangfire.AtualizarStatusRenovacaoClientes(), Cron.Monthly);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

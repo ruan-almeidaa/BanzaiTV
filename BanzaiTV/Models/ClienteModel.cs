@@ -1,4 +1,6 @@
-﻿namespace BanzaiTV.Models
+﻿using BanzaiTV.Enums.ClienteEnums;
+
+namespace BanzaiTV.Models
 {
     public class ClienteModel
     {
@@ -11,6 +13,7 @@
         public required int PlanoId { get; set; }
         public required bool Ativo { get; set; }
         public required PlanoModel Plano { get; set; }
+        public StatusEnum? Status { get; set; }
 
     }
 }
