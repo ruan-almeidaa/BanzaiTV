@@ -95,15 +95,20 @@ namespace BanzaiTV.Services
 
         }
 
-		public void LancarMensalidadesDoCliente(ClienteModel cliente)
+		public void LancarMensalidadesDoCliente(ClienteModel cliente, bool ehRenovacao)
 		{
 
 			try
 			{
-                int mensalidadesCriadas = 1;
                 DateTime dataAtual = DateTime.Now;
+                int mensalidadesCriadas = 1;
 
-
+                if (ehRenovacao)
+				{
+                    MensalidadeModel ultimaMensalidadeCliente = BuscaUltimaMensalidadeCliente(cliente.Id);
+					dataAtual = ultimaMensalidadeCliente.DataVencimento;
+                }
+				
 				do
                 {
 					//Inicializa a primeira mensalidade, gerando ela para o próximo mês.E Conforme for criando as mensalidades, precisa ir incrementando os meses.
@@ -166,7 +171,7 @@ namespace BanzaiTV.Services
 			try
 			{
 				ExcluirMensalidadesDoCliente(cliente, null);
-                LancarMensalidadesDoCliente(cliente);
+                LancarMensalidadesDoCliente(cliente, false);
 
             }
 			catch (Exception)
@@ -183,6 +188,19 @@ namespace BanzaiTV.Services
 				if(status == null) _mensalidadeRepository.ExcluirTodasMensalidadesDoCliente(cliente);
 				//Por enquanto esse método apaga todas as mensalidades, mas será evoluído para filtrar por status.
 
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+        public MensalidadeModel BuscaUltimaMensalidadeCliente(int idCliente)
+        {
+			try
+			{
+				return _mensalidadeRepository.BuscaUltimaMensalidadeCliente(idCliente);
 			}
 			catch (Exception)
 			{

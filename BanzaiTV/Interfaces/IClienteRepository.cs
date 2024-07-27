@@ -10,5 +10,6 @@ namespace BanzaiTV.Interfaces
 
         ClienteModel Editar(ClienteModel cliente);
         bool Excluir(ClienteModel cliente);
+        ClienteModel AtulizaPlanoCliente(ClienteModel cliente);
     }
 }

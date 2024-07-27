@@ -88,5 +88,25 @@ namespace BanzaiTV.Repository
                 throw;
             }
         }
+
+        public ClienteModel AtulizaPlanoCliente(ClienteModel cliente)
+        {
+            try
+            {
+                _bancoContext.ChangeTracker.Clear();
+                _bancoContext.Entry(cliente).Property(c => c.PlanoId).IsModified = true;
+                _bancoContext.SaveChanges();
+                return _bancoContext.Clientes
+                                            .Where(c => c.Id == cliente.Id)
+                                            .Include(c => c.Plano)
+                                            .FirstOrDefault();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

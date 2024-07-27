@@ -32,7 +32,7 @@ namespace BanzaiTV.Services
             try
             {
                 ClienteModel clienteCadastrado = _clienteRepository.Cadastrar(cliente);
-                _mensalidadeService.LancarMensalidadesDoCliente(clienteCadastrado);
+                _mensalidadeService.LancarMensalidadesDoCliente(clienteCadastrado, false);
                 return clienteCadastrado;
             }
             catch (Exception)
@@ -61,7 +61,7 @@ namespace BanzaiTV.Services
             {
                 ClienteModel clienteNoBanco = BuscaPorId(cliente.Id);
                 if (clienteNoBanco != cliente) _clienteRepository.Editar(cliente);
-                if (cliente.PlanoId != clienteNoBanco.PlanoId) AlterarPlano(cliente);
+                if (cliente.PlanoId != clienteNoBanco.PlanoId) _mensalidadeService.RecriarMensalidadesDoCliente(cliente);
                 return cliente;
             }
             catch
@@ -85,11 +85,11 @@ namespace BanzaiTV.Services
            
         }
 
-        public void AlterarPlano(ClienteModel cliente)
+        public void RenovarPlanoCliente(ClienteModel cliente)
         {
             try
             {
-                _mensalidadeService.RecriarMensalidadesDoCliente(cliente);
+                _mensalidadeService.LancarMensalidadesDoCliente(_clienteRepository.AtulizaPlanoCliente(cliente), true);
             }
             catch (Exception)
             {

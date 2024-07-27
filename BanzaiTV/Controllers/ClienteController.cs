@@ -61,7 +61,7 @@ namespace BanzaiTV.Controllers
             }
 
         }
-
+        [HttpGet]
         public IActionResult Editar(int id)
         {
             
@@ -149,12 +149,41 @@ namespace BanzaiTV.Controllers
             }
 
         }
+        [HttpGet]
         public IActionResult VerMais(int id)
         {
             try
             {
                 if (_sessao.BuscarSessao == null) return View("Index", "Home");
                 return View(_clienteViewModelService.CarregaViewVerMais(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpGet]
+        public IActionResult Renovar(int id)
+        {
+            try
+            {
+                if (_sessao.BuscarSessao == null) return View("Index", "Home");
+                return View(_clienteViewModelService.CarregaViewRenovar(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPost]
+        public IActionResult Renovar(ClienteModel cliente)
+        {
+            try
+            {
+                _clienteService.RenovarPlanoCliente(cliente);
+                return RedirectToAction("Index", "Cliente");
             }
             catch (Exception)
             {

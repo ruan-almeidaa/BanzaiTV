@@ -70,5 +70,23 @@ namespace BanzaiTV.ViewModelServices
                 throw;
             }
         }
+
+        public ClienteViewModel CarregaViewRenovar(int idCliente)
+        {
+            try
+            {
+                ClienteModel clienteModel = _clienteService.BuscaPorId(idCliente);
+                ClienteViewModel clienteViewModel = new();
+                clienteViewModel = _mapper.Map<ClienteViewModel>(clienteModel);
+                clienteViewModel.ListaDePlanos = _planoService.BuscarTodos();
+                return clienteViewModel;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

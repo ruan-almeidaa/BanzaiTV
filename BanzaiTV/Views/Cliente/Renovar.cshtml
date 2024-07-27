@@ -1,0 +1,38 @@
+﻿@model BanzaiTV.ViewModel.ClienteViewModel
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="card-header">
+            <h4>Renovação do cliente @Model.Nome</h4>
+        </div>
+        <div class="card-body">
+            <form asp-controller="Cliente" asp-action="Renovar" method="post">
+                <input type="hidden" asp-for"Id" />
+                <input type="hideen" asp-for="DiaVencimento" class="form-control" id="DiaVencimento">
+
+                <div class="row">
+
+                    <div class="col">
+                        <label for="plano" class="form-label">Plano:</label>
+                        <select asp-for="PlanoId" id="plano" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            @foreach (PlanoModel plano in Model.ListaDePlanos)
+                            {
+                                <option value="@plano.Id">@plano.Titulo</option>
+                            }
+                        </select>
+                    </div>
+
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> Renovar</button>
+                <a href="/Cliente" class="btn btn-danger"><i class="bi bi-arrow-left"></i> Voltar</a>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+

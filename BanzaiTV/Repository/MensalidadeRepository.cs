@@ -74,6 +74,22 @@ namespace BanzaiTV.Repository
             }
         }
 
+        public MensalidadeModel BuscaUltimaMensalidadeCliente(int idCliente)
+        {
+            try
+            {
+                return _bancoContext.Mensalidades
+                                                .Where(m => m.ClienteId == idCliente)
+                                                .OrderByDescending(m => m.DataVencimento)
+                                                .FirstOrDefault();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public MensalidadeModel Cadastrar(MensalidadeModel mensalidade)
         {
             try
