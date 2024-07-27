@@ -1,4 +1,5 @@
-﻿using BanzaiTV.Interfaces;
+﻿using BanzaiTV.Enums.ClienteEnums;
+using BanzaiTV.Interfaces;
 using BanzaiTV.Models;
 
 namespace BanzaiTV.ViewModel
@@ -16,6 +17,7 @@ namespace BanzaiTV.ViewModel
         public PlanoModel? Plano { get; set; }
         public List<PlanoModel>? ListaDePlanos { get; set; }
         public List<MensalidadeModel>? ListaDeMensalidades { get; set; }
+        public StatusEnum? Status { get; set; }
     }
 
 }

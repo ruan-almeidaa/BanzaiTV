@@ -19,6 +19,7 @@ namespace BanzaiTV.Repository
         {
             return _bancoContext.Clientes
                                         .Include(c => c.Plano)
+                                        .OrderBy(c => c.Id)
                                         .ToList();
         }
 

@@ -1,4 +1,6 @@
 ﻿@model List<ClienteModel>
+@using BanzaiTV.Enums.ClienteEnums;
+
 <div class="container">
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
@@ -14,30 +16,39 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Cliente</th>
                         <th scope="col">Plano</th>
-                        <th scope="col">Dia do vencimento</th>
+                        <th scope="col">Status</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @if(Model != null && Model.Any())
                     {
+                        var numeroLinha = 1;
                         foreach(ClienteModel cliente in Model)
                         {
                             <tr>
+                                <td>@numeroLinha</td>
                                 <td>@cliente.Nome</td>
                                 <td>@cliente.Plano.Titulo</td>
-                                <td>@cliente.DiaVencimento.ToString("D2")</td>
+                                <td>
+                                    @if (cliente.Status == StatusEnum.Renovar)
+                                    {
+                                        <a role="button" class="btn btn-primary btn-sm" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Renovar"> <i class="bi bi-arrow-clockwise"></i> Renovar</a>
+                                    }
+                                </td>
                                 <td>
                                     <div>
-                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver cadastro" role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="VerMais"><i class="fa-solid fa-circle-info"></i></a>
-                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" role="button" class="me-2" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar"><i class="fa-solid fa-square-pen"></i></a>
-                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" role="button" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="ConfirmaExcluir"><i class="fa-solid fa-square-xmark"></i></a>
+                                        <a role="button" class="btn btn-primary btn-sm" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="VerMais"><i class="bi bi-info-circle"></i> Ver mais</a>
+                                        <a role="button" class="btn btn-secondary btn-sm" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Editar"><i class="bi bi-pencil-square"></i> Editar</a>
+                                        <a role="button" class="btn btn-danger btn-sm" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="ConfirmaExcluir"><i class="bi bi-x-circle"></i> Excluir</a>
                                     </div>
 
-                            </td>
+                                </td>
                             </tr>
+                            numeroLinha++;
                         }
                     }
 
