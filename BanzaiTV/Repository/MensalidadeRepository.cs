@@ -49,7 +49,8 @@ namespace BanzaiTV.Repository
             try
             {
                 return _bancoContext.Mensalidades
-                                                .Where(m => m.ClienteId  == idCliente && m.DataPagamento == null)
+                                                .Where(m => m.ClienteId  == idCliente)
+                                                .OrderBy(m => m.DataVencimento)
                                                 .ToList();
             }
             catch (Exception)
@@ -65,6 +66,7 @@ namespace BanzaiTV.Repository
             {
                 return _bancoContext.Mensalidades
                                                 .Include(m => m.Cliente)
+                                                .OrderBy(m => m.DataVencimento)
                                                 .ToList();
             }
             catch (Exception)
