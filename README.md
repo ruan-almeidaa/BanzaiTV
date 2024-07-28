@@ -1,6 +1,8 @@
 # Sistema de gestão de planos por assinatura
 
-Este sistema é uma aplicação web desenvolvida para controle interno onde é possível gerenciar os planos oferecidos, cadastrar os clientes e ter um controle sobre suas mensalidades.## Funcionalidades
+Este sistema é uma aplicação web desenvolvida para controle interno onde é possível gerenciar os planos oferecidos, cadastrar os clientes e ter um controle sobre suas mensalidades.
+
+## Funcionalidades
 
 ### Cadastro de Planos
 
