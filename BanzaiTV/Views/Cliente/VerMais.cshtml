@@ -74,6 +74,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Vencimento</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Status</th>
@@ -82,9 +83,11 @@
                 <tbody>
                     @if (Model.ListaDeMensalidades != null)
                     {
+                        int numeroLinha = 1;
                         foreach (MensalidadeModel mensalidade in Model.ListaDeMensalidades)
                         {
                             <tr>
+                                <td>@numeroLinha</td>
                                 <td>@mensalidade.DataVencimento.ToString("dd/MM/yyyy")</td>
 
                                 <td>R$ @mensalidade.Valor</td>
@@ -103,6 +106,7 @@
                                     }
                                 </td>
                             </tr>
+                            numeroLinha++;
                         }
                     }
 
