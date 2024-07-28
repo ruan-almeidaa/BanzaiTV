@@ -16,6 +16,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Cliente</th>
                         <th scope="col">Vencimento</th>
                         <th scope="col">Valor</th>
@@ -26,9 +27,11 @@
                 <tbody>
                     @if (Model != null)
                     {
+                        int numeroLinha = 1;
                         foreach (var mensalidade in Model)
                         {
                             <tr>
+                                <td>@numeroLinha</td>
                                 <td>@mensalidade.Cliente.Nome</td>
                                 <td>@(mensalidade.DataVencimento != null ? mensalidade.DataVencimento.Value.ToString("dd/MM/yyyy") : "Data não disponível")</td>
                                 <td>R$ @mensalidade.Valor</td>
@@ -47,11 +50,12 @@
                                     
                                 <td>
                                     <div>
-                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" role="button" class="me-2" asp-route-id="@mensalidade.Id" asp-controller="Mensalidade" asp-action="Editar"><i class="fa-solid fa-square-pen"></i></a>
-                                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir" role="button" asp-route-id="@mensalidade.Id" asp-controller="Mensalidade" asp-action="ConfirmaExcluir"><i class="fa-solid fa-square-xmark"></i></a>
+                                        <a role="button" class="btn btn-secondary btn-sm" asp-route-id="@mensalidade.Id" asp-controller="Mensalidade" asp-action="Editar"><i class="bi bi-pencil-square"></i> Editar</a>
+                                        <a role="button" class="btn btn-danger btn-sm" asp-route-id="@mensalidade.Id" asp-controller="Mensalidade" asp-action="ConfirmaExcluir"><i class="bi bi-x-circle"></i> Excluir</a>
                                     </div>
                                 </td>
                             </tr>
+                            numeroLinha++;
                         }
                     }
 
