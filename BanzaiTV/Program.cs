@@ -1,14 +1,13 @@
 using BanzaiTV.Database;
 using BanzaiTV.Helper.AutoMapperCfg;
+using BanzaiTV.Helper.HangfireCfg;
 using BanzaiTV.Helper.Sessao;
 using BanzaiTV.Interfaces;
 using BanzaiTV.Repository;
 using BanzaiTV.Services;
 using BanzaiTV.ViewModelServices;
 using Hangfire;
-using Hangfire.PostgreSql;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,16 +18,26 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 builder.Services.AddControllersWithViews();
 
 // Configure Entity Framework
-builder.Services.AddEntityFrameworkNpgsql()
-    .AddDbContext<BancoContext>(options =>
-        options.UseNpgsql(builder.Configuration.GetConnectionString("Database")));
+// Configure Entity Framework
+builder.Services.AddDbContext<BancoContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Database"), sqlServerOptions =>
+    {
+        sqlServerOptions.CommandTimeout(60); // Tempo limite de comando em segundos
+        sqlServerOptions.EnableRetryOnFailure(1); // Tenta novamente 1 vez em caso de falha
+    }));
 
-// Configura Hangfire PostgreSQL
-builder.Services.AddHangfire(configuration => configuration
-    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-    .UseSimpleAssemblyNameTypeSerializer()
+
+// Configura Hangfire sql server
+builder.Services.AddHangfire(config =>
+{
+    config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+        .UseSimpleAssemblyNameTypeSerializer()
     .UseRecommendedSerializerSettings()
-    .UsePostgreSqlStorage(builder.Configuration.GetConnectionString("Database")));
+          .UseSqlServerStorage(builder.Configuration.GetConnectionString("Database"));
+    // Configurações adicionais aqui
+});
+builder.Services.AddHangfireServer();
+builder.Services.AddSingleton<BanzaiTV.Helper.HangfireCfg.Hangfire>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -45,9 +54,8 @@ builder.Services.AddScoped<IClienteViewModelService, ClienteViewModelService>();
 builder.Services.AddScoped<IMensalidadeViewModelService, MensalidadeViewModelService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-builder.Services.AddHangfireServer();
+
 builder.Services.AddSingleton<BanzaiTV.Helper.HangfireCfg.Hangfire>();
-builder.Services.AddHangfireServer();
 
 builder.Services.AddSession(o =>
 {
@@ -57,7 +65,13 @@ builder.Services.AddSession(o =>
 
 var app = builder.Build();
 
-app.UseHangfireDashboard();
+app.UseAuthorization();
+app.UseSession();
+
+app.UseHangfireDashboard("/hangfire", new DashboardOptions
+{
+    Authorization = new[] { new HangfireAuthorizationFilter() }
+});
 
 
 var hangfire = app.Services.GetService<BanzaiTV.Helper.HangfireCfg.Hangfire>();
@@ -79,10 +93,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthorization();
-
-app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
