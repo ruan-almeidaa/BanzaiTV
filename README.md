@@ -45,7 +45,7 @@ Quando o Sistema identifica que o cliente só possui uma mensalidade em aberto, 
 O sistema é desenvolvido utilizando as seguintes tecnologias:
 - Estrutura MVC
 - .NET Core para o desenvolvimento back-end
-- PostgreSQL como banco de dados para armazenamento dos dados
+- SQL Server como banco de dados para armazenamento dos dados
 - Entity Framework Core para mapeamento objeto-relacional
 - HTML, CSS e JavaScript para o frontend, utilizando Razor Pages.
 Também foram utilizadas as seguintes tecnlogias externas:
