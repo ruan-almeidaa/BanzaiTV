@@ -158,5 +158,18 @@ namespace BanzaiTV.Repository
                 throw;
             }
         }
+
+        public bool PlanoTemMensalidadesPendentes(int idPlano)
+        {
+            try
+            {
+                return _bancoContext.Mensalidades.Any(m => m.PlanoId == idPlano && m.DataPagamento == null);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -17,5 +17,6 @@ namespace BanzaiTV.Interfaces
         void RecriarMensalidadesDoCliente(ClienteModel cliente);
         void ExcluirMensalidadesDoCliente(ClienteModel cliente, StatusEnum? status);
         MensalidadeModel BuscaUltimaMensalidadeCliente(int idCliente);
+        bool PlanoTemMensalidadesPendentes(int idPlano);
     }
 }

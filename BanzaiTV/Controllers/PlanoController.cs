@@ -64,6 +64,9 @@ namespace BanzaiTV.Controllers
             {
                 if(_sessao != null)
                 {
+                    bool planoEstaEmUso = _planoService.VerificarSePlanoEstaEmUso(id);
+                    if (planoEstaEmUso) return RedirectToAction("NaoPermiteEditar", "Plano");
+
                     PlanoModel plano = _planoService.BuscaPorId(id);
                     return View(plano);
                 }
@@ -108,6 +111,8 @@ namespace BanzaiTV.Controllers
                 PlanoModel plano = _planoService.BuscaPorId(id);
                 if(_sessao.BuscarSessao() != null && plano != null)
                 {
+                    bool planoEstaEmUso = _planoService.VerificarSePlanoEstaEmUso(id);
+                    if (planoEstaEmUso) return RedirectToAction("NaoPermiteEditar", "Plano");
                     return View(plano);
                 }
                 else
@@ -143,6 +148,19 @@ namespace BanzaiTV.Controllers
                 throw;
             }
 
+        }
+
+        public IActionResult NaoPermiteEditar()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
     }

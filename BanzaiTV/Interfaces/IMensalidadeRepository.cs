@@ -14,5 +14,6 @@ namespace BanzaiTV.Interfaces
         bool AtualizarStatus(MensalidadeModel mensalidade);
         void ExcluirTodasMensalidadesDoCliente(ClienteModel cliente);
         MensalidadeModel BuscaUltimaMensalidadeCliente(int idCliente);
+        bool PlanoTemMensalidadesPendentes(int idPlano);
     }
 }

@@ -120,7 +120,9 @@ namespace BanzaiTV.Services
                         ClienteId = cliente.Id,
                         DataVencimento = dataMensalidadeDiaCliente,
                         Valor = cliente.Plano.Valor,
-                        Cliente = cliente
+                        Cliente = cliente,
+						PlanoId = cliente.PlanoId,
+						Plano = cliente.Plano
                     };
                     Cadastrar(mensalidadeAhSerCriada);
                     mensalidadesCriadas++;
@@ -201,6 +203,19 @@ namespace BanzaiTV.Services
 			try
 			{
 				return _mensalidadeRepository.BuscaUltimaMensalidadeCliente(idCliente);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+        public bool PlanoTemMensalidadesPendentes(int idPlano)
+        {
+			try
+			{
+				return _mensalidadeRepository.PlanoTemMensalidadesPendentes(idPlano);
 			}
 			catch (Exception)
 			{

@@ -11,5 +11,7 @@ namespace BanzaiTV.Models
         public DateTime? DataPagamento { get; set; }
         public required ClienteModel Cliente { get; set; }
         public StatusEnum? Status { get; set; }
+        public int? PlanoId { get; set; }
+        public PlanoModel? Plano { get; set; }
     }
 }
