@@ -13,12 +13,14 @@ namespace BanzaiTV.Controllers
         private readonly IClienteService _clienteService;
         private readonly ISessao _sessao;
         private readonly IClienteViewModelService _clienteViewModelService;
+        private readonly IOrquestracaoService _orquestracaoService;
 
-        public ClienteController(IClienteService clienteService, ISessao sessao, IClienteViewModelService clienteViewModelService)
+        public ClienteController(IClienteService clienteService, ISessao sessao, IClienteViewModelService clienteViewModelService, IOrquestracaoService orquestracaoService)
         {
             _clienteService = clienteService;
             _sessao = sessao;
             _clienteViewModelService = clienteViewModelService;
+            _orquestracaoService = orquestracaoService;
         }
 
         public IActionResult Index()
@@ -52,7 +54,8 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                _clienteService.Cadastrar(cliente);
+
+                _orquestracaoService.Cliente_Cadastrar(cliente);
                 return RedirectToAction("Index");
             }
             catch (Exception)

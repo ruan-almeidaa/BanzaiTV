@@ -16,8 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Configure Entity Framework
-// Configure Entity Framework
+//Entity Framework
 builder.Services.AddDbContext<BancoContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Database"), sqlServerOptions =>
     {
@@ -51,6 +50,7 @@ builder.Services.AddScoped<IMensalidadeService, MensalidadeService>();
 builder.Services.AddScoped<ISessao, SessaoService>();
 builder.Services.AddScoped<IClienteViewModelService, ClienteViewModelService>();
 builder.Services.AddScoped<IMensalidadeViewModelService, MensalidadeViewModelService>();
+builder.Services.AddScoped<IOrquestracaoService, OrquestracaoService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

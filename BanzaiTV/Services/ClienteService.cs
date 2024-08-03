@@ -32,9 +32,7 @@ namespace BanzaiTV.Services
         {
             try
             {
-                ClienteModel clienteCadastrado = _clienteRepository.Cadastrar(cliente);
-                _mensalidadeService.LancarMensalidadesDoCliente(clienteCadastrado, false);
-                return clienteCadastrado;
+                return _clienteRepository.Cadastrar(cliente);
             }
             catch (Exception)
             {
