@@ -12,6 +12,8 @@ O sistema permite o cadastro de diferentes planos de assinatura com as seguintes
 - Duração em Meses
 - Valor Mensal
 
+Além do cadastro, o sistema garante a integridade dos dados só permitindo a edição e exclusão de planos que não tenham mensalidades pendentes.
+
 ### Cadastro de Clientes
 
 Para cada cliente, podem ser registradas informações gerais além da associação a um plano específico. As informações gerais do cliente incluem dados como nome, endereço, e-mail, telefone, entre outros.
@@ -20,7 +22,6 @@ Para cada cliente, podem ser registradas informações gerais além da associaç
 
 - O administrador pode lançar manualmente as mensalidades para os clientes. Além disso, o sistema gera automaticamente as mensalidades no momento do cadastro do cliente, de acordo com o plano escolhido.
 - Caso seja necessário editar o plano de algum cliente, as mensalidades são geradas novamente, de acordo com o plano escolhido.
-
 
 ### Status das Mensalidades
 
@@ -39,7 +40,6 @@ Quando o Sistema identifica que o cliente só possui uma mensalidade em aberto, 
 ![App Screenshot](https://i.imgur.com/Rzbq1aw.png)
 ![App Screenshot](https://i.imgur.com/fKin8LH.png)
 
-
 ## Tecnologias Utilizadas
 
 O sistema é desenvolvido utilizando as seguintes tecnologias:
@@ -57,7 +57,7 @@ Também foram utilizadas as seguintes tecnlogias externas:
 ```bash
 1. Clone este repositório para sua máquina local.
 2. Certifique-se de ter o .NET SDK instalado.
-3. Configure a string de conexão com o banco de dados PostgreSQL no arquivo `appsettings.json`.
+3. Configure a string de conexão com o banco de dados SQL Server no arquivo `appsettings.json`.
 4. Execute as migrações do Entity Framework Core para criar a estrutura do banco de dados.
 5. Inicie a aplicação e navegue para a URL local para acessar o sistema.
 ```
