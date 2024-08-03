@@ -1,5 +1,5 @@
 ﻿using BanzaiTV.Database;
-using BanzaiTV.Interfaces;
+using BanzaiTV.Interfaces.IRepository;
 using BanzaiTV.Models;
 using Microsoft.EntityFrameworkCore;
 

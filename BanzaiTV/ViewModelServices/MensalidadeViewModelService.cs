@@ -1,7 +1,8 @@
-﻿using BanzaiTV.Interfaces;
-using BanzaiTV.ViewModel;
+﻿using BanzaiTV.ViewModel;
 using BanzaiTV.Models;
 using AutoMapper;
+using BanzaiTV.Interfaces.IService;
+using BanzaiTV.Interfaces.IViewModelService;
 
 namespace BanzaiTV.ViewModelServices
 {

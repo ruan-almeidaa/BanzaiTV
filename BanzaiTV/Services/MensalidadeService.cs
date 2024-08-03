@@ -1,5 +1,6 @@
 ﻿using BanzaiTV.Enums.MensalidadesEnums;
-using BanzaiTV.Interfaces;
+using BanzaiTV.Interfaces.IRepository;
+using BanzaiTV.Interfaces.IService;
 using BanzaiTV.Models;
 
 namespace BanzaiTV.Services

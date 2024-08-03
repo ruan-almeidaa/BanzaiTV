@@ -1,5 +1,6 @@
 ﻿using BanzaiTV.Helper.Sessao;
-using BanzaiTV.Interfaces;
+using BanzaiTV.Interfaces.IService;
+using BanzaiTV.Interfaces.IViewModelService;
 using BanzaiTV.Models;
 using BanzaiTV.Services;
 using BanzaiTV.ViewModel;

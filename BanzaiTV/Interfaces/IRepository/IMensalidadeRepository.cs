@@ -1,21 +1,18 @@
 ﻿using BanzaiTV.Enums.MensalidadesEnums;
 using BanzaiTV.Models;
 
-namespace BanzaiTV.Interfaces
+namespace BanzaiTV.Interfaces.IRepository
 {
-    public interface IMensalidadeService
+    public interface IMensalidadeRepository
     {
         MensalidadeModel Cadastrar(MensalidadeModel mensalidade);
         MensalidadeModel Editar(MensalidadeModel mensalidade);
         MensalidadeModel BuscaPorId(int id);
         List<MensalidadeModel> BuscarTodos();
-        bool Excluir(int id);
+        bool Excluir(MensalidadeModel mensalidade);
         List<MensalidadeModel> BuscarMensalidadesDeCliente(int idCliente);
-        void LancarMensalidadesDoCliente(ClienteModel cliente, bool ehRenovacao);
-        StatusEnum VerificarStatus(MensalidadeModel mensalidade);
         bool AtualizarStatus(MensalidadeModel mensalidade);
-        void RecriarMensalidadesDoCliente(ClienteModel cliente);
-        void ExcluirMensalidadesDoCliente(ClienteModel cliente, StatusEnum? status);
+        void ExcluirTodasMensalidadesDoCliente(ClienteModel cliente);
         MensalidadeModel BuscaUltimaMensalidadeCliente(int idCliente);
         bool PlanoTemMensalidadesPendentes(int idPlano);
     }

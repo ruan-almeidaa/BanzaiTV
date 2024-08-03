@@ -1,6 +1,6 @@
 ﻿using BanzaiTV.Models;
 
-namespace BanzaiTV.Interfaces
+namespace BanzaiTV.Interfaces.IRepository
 {
     public interface IClienteRepository
     {

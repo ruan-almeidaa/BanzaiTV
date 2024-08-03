@@ -1,5 +1,5 @@
 ﻿using BanzaiTV.Helper.Sessao;
-using BanzaiTV.Interfaces;
+using BanzaiTV.Interfaces.IService;
 using BanzaiTV.Models;
 using Microsoft.AspNetCore.Mvc;
 

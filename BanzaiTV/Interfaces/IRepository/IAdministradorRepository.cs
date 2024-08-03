@@ -1,8 +1,8 @@
 ﻿using BanzaiTV.Models;
 
-namespace BanzaiTV.Interfaces
+namespace BanzaiTV.Interfaces.IRepository
 {
-    public interface IAdministradorService
+    public interface IAdministradorRepository
     {
         AdministradorModel Logar(AdministradorModel administrador);
     }

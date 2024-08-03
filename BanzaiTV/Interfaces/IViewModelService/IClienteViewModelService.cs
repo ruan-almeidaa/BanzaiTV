@@ -1,6 +1,6 @@
 ﻿using BanzaiTV.ViewModel;
 
-namespace BanzaiTV.Interfaces
+namespace BanzaiTV.Interfaces.IViewModelService
 {
     public interface IClienteViewModelService
     {

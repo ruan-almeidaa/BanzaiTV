@@ -1,14 +1,13 @@
 ﻿using BanzaiTV.Models;
 
-namespace BanzaiTV.Interfaces
+namespace BanzaiTV.Interfaces.IRepository
 {
-    public interface IPlanoService
+    public interface IPlanoRepository
     {
         PlanoModel Cadastrar(PlanoModel plano);
         List<PlanoModel> BuscarTodos();
         PlanoModel Editar(PlanoModel plano);
         PlanoModel BuscaPorId(int id);
-        bool Excluir(int id);
-        bool VerificarSePlanoEstaEmUso(int id);
+        bool Excluir(PlanoModel plano);
     }
 }
