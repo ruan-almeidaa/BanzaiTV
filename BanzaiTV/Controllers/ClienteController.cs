@@ -181,7 +181,8 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                _clienteService.RenovarPlanoCliente(cliente);
+                if (_sessao.BuscarSessao == null) return View("Index", "Home");
+                _orquestracaoService.Cliente_Renovar(cliente);
                 return RedirectToAction("Index", "Cliente");
             }
             catch (Exception)

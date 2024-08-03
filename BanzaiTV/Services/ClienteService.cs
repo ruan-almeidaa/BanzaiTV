@@ -7,12 +7,10 @@ namespace BanzaiTV.Services
     public class ClienteService : IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
-        private readonly IMensalidadeService _mensalidadeService;
 
-        public ClienteService(IClienteRepository clienteRepository, IMensalidadeService mensalidadeService)
+        public ClienteService(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
-            _mensalidadeService = mensalidadeService;
         }
 
         public List<ClienteModel> BuscarTodos()
@@ -81,11 +79,11 @@ namespace BanzaiTV.Services
            
         }
 
-        public void RenovarPlanoCliente(ClienteModel cliente)
+        public ClienteModel AtualizarPlano(ClienteModel cliente)
         {
             try
             {
-                _mensalidadeService.LancarMensalidadesDoCliente(_clienteRepository.AtulizaPlanoCliente(cliente), true);
+               return _clienteRepository.AtulizaPlanoCliente(cliente);
             }
             catch (Exception)
             {

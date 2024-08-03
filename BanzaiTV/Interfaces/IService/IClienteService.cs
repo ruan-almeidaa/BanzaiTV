@@ -9,6 +9,6 @@ namespace BanzaiTV.Interfaces.IService
         ClienteModel BuscaPorId(int id);
         ClienteModel Editar(ClienteModel cliente);
         bool Excluir(int id);
-        void RenovarPlanoCliente(ClienteModel cliente);
+        ClienteModel AtualizarPlano(ClienteModel cliente);
     }
 }

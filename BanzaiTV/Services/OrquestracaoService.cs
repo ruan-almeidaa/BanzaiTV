@@ -49,5 +49,18 @@ namespace BanzaiTV.Services
                 throw;
             }
         }
+
+        public void Cliente_Renovar(ClienteModel cliente)
+        {
+            try
+            {
+                _mensalidadeService.LancarMensalidadesDoCliente(_clienteService.AtualizarPlano(cliente), true);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
