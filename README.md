@@ -4,6 +4,14 @@ Este sistema é uma aplicação web desenvolvida para controle interno onde é p
 
 ## Funcionalidades
 
+### Visão geral
+
+Para facilitar a gestão, o sistema possui um painel para exibir informações relevantes para gestão, como:
+
+- Quantidade total de clientes
+- Quantidade de mensalidades atrasadas, pendentes e pagas
+- Valor total em aberto para receber
+
 ### Cadastro de Planos
 
 O sistema permite o cadastro de diferentes planos de assinatura com as seguintes informações:
@@ -36,8 +44,10 @@ O sistema possui uma atualização automática, indicando o status de cada mensa
 Quando o Sistema identifica que o cliente só possui uma mensalidade em aberto, é exibido ao administrador, um ícone indicando que aquele cliente precisa ser renovado. Quando renovado, as mensalidades são geradas novamente, de acordo com o plano escolhido.
 ## Screenshots
 
+![App Screenshot](https://i.imgur.com/p3hqZ7S.png)
 ![App Screenshot](https://i.imgur.com/9Utt8rg.png)
 ![App Screenshot](https://i.imgur.com/Rzbq1aw.png)
+![App Screenshot](https://i.imgur.com/7LdSFet.png)
 ![App Screenshot](https://i.imgur.com/fKin8LH.png)
 
 ## Tecnologias Utilizadas

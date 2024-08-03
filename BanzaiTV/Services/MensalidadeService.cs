@@ -272,8 +272,19 @@ namespace BanzaiTV.Services
         {
 			try
 			{
-                if (mesReferencia.HasValue && anoReferencia.HasValue) return _mensalidadeRepository.ValorAhReceber(mesReferencia, anoReferencia);
-                return _mensalidadeRepository.ValorAhReceber(null, null);
+				double valorAhReceber = 0;
+                if (mesReferencia.HasValue && anoReferencia.HasValue)
+				{
+                    valorAhReceber = _mensalidadeRepository.ValorAhReceber(mesReferencia, anoReferencia);
+				}
+				else
+				{
+					valorAhReceber = _mensalidadeRepository.ValorAhReceber(null, null);
+				}
+
+                return Math.Truncate(valorAhReceber * 100) / 100;
+
+
             }
 			catch (Exception)
 			{
