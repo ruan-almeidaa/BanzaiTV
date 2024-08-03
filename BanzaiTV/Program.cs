@@ -24,7 +24,6 @@ builder.Services.AddDbContext<BancoContext>(options =>
         sqlServerOptions.EnableRetryOnFailure(1); // Tenta novamente 1 vez em caso de falha
     }));
 
-
 // Configura Hangfire sql server
 builder.Services.AddHangfire(config =>
 {
@@ -64,7 +63,7 @@ builder.Services.AddSession(o =>
 });
 
 var app = builder.Build();
-
+app.UpdateDatabase();
 app.UseAuthorization();
 app.UseSession();
 
