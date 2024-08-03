@@ -30,5 +30,24 @@ namespace BanzaiTV.Services
                 throw;
             }
         }
+
+        public ClienteModel Cliente_Editar(ClienteModel cliente)
+        {
+            try
+            {
+                ClienteModel cadastroAtualCliente = _clienteService.BuscaPorId(cliente.Id);
+                // Só precisa realizar o update, se tem alguma diferença entre o cliente que está no banco e o que está sendo recebido.
+                if(cadastroAtualCliente != cliente) _clienteService.Editar(cliente);
+                // Caso tenha alterado o plano do cliente, precisa recriar as mensalidades considerando o novo plano.
+                if(cadastroAtualCliente.PlanoId != cliente.PlanoId) _mensalidadeService.RecriarMensalidadesDoCliente(cliente);
+                return cliente;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

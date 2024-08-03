@@ -92,15 +92,10 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                if (_sessao.BuscarSessao() != null)
-                {
-                    _clienteService.Editar(cliente);
-                    return RedirectToAction("Index","Cliente");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+
+                if(_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                _orquestracaoService.Cliente_Editar(cliente);
+                return RedirectToAction("Index","Cliente");
 
             }
             catch (Exception)

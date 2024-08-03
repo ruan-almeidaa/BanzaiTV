@@ -58,10 +58,7 @@ namespace BanzaiTV.Services
         {
             try
             {
-                ClienteModel clienteNoBanco = BuscaPorId(cliente.Id);
-                if (clienteNoBanco != cliente) _clienteRepository.Editar(cliente);
-                if (cliente.PlanoId != clienteNoBanco.PlanoId) _mensalidadeService.RecriarMensalidadesDoCliente(cliente);
-                return cliente;
+                return _clienteRepository.Editar(cliente);
             }
             catch
             {
