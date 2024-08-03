@@ -1,6 +1,26 @@
-﻿<div class="container">
+﻿@model BanzaiTV.ViewModel.VisaoGeralViewModel;
+
+<div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <h1>Painel de controle</h1>
+
+        <div clas="container">
+            <h1>Quantidade clientes: @Model.QuantidadeClientes</h1>
+            <h1>Quantidade atrasadas: @Model.QuantidadeMensalidadesAtrasadasMesAtual</h1>
+            <h1>Quantidade pendentes: @Model.QuantidadeMensalidadesPendentesMesAtual</h1>
+            <h1>Quantidade pagas: @Model.QuantidadeMensalidadesPagasMesAtual</h1>
+            <h1>Quantidade receber: @Model.ValorReceberMesAtual</h1>
+        </div>
+        <br />
+        <hr />
+        <div clas="container">
+            <h1>Quantidade atrasadas: @Model.QuantidadeMensalidadesAtrasadas</h1>
+            <h1>Quantidade pendentes: @Model.QuantidadeMensalidadesPendentes</h1>
+            <h1>Quantidade pagas: @Model.QuantidadeMensalidadesPagas</h1>
+            <h1>Quantidade receber: @Model.ValorReceber</h1>
+        </div>
+
+
+
     </div>
     <br />
 

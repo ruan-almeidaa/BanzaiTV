@@ -91,5 +91,11 @@ namespace BanzaiTV.Services
                 throw;
             }
         }
+
+        public int QuantidadeDeClientes()
+        {
+            return _clienteRepository.QuantidadeDeClientes();
+
+        }
     }
 }

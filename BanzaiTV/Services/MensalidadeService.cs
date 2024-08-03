@@ -224,6 +224,63 @@ namespace BanzaiTV.Services
 				throw;
 			}
         }
+
+        public int QuantidadeAtrasadas(int? mesReferencia, int? anoReferencia)
+        {
+			try
+			{
+				return _mensalidadeRepository.QuantidadeAtrasadas(mesReferencia,anoReferencia);
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+        public int QuantidadePendentes(int? mesReferencia, int? anoReferencia)
+        {
+			try
+			{
+				if(mesReferencia.HasValue && anoReferencia.HasValue) return _mensalidadeRepository.QuantidadePendentes(mesReferencia, anoReferencia);
+                return _mensalidadeRepository.QuantidadePendentes(null, null);
+
+            }
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+        public int QuantidadePagas(int? mesReferencia, int? anoReferencia)
+        {
+			try
+			{
+                if (mesReferencia.HasValue && anoReferencia.HasValue) return _mensalidadeRepository.QuantidadePagas(mesReferencia, anoReferencia);
+                return _mensalidadeRepository.QuantidadePagas(null, null);
+
+            }
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
+
+        public double ValorAhReceber(int? mesReferencia, int? anoReferencia)
+        {
+			try
+			{
+                if (mesReferencia.HasValue && anoReferencia.HasValue) return _mensalidadeRepository.ValorAhReceber(mesReferencia, anoReferencia);
+                return _mensalidadeRepository.ValorAhReceber(null, null);
+            }
+			catch (Exception)
+			{
+
+				throw;
+			}
+        }
     }
 }
 

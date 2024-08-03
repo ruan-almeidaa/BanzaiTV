@@ -171,5 +171,112 @@ namespace BanzaiTV.Repository
                 throw;
             }
         }
+
+        public int QuantidadeAtrasadas(int? mesReferencia, int? anoReferencia)
+        {
+            try
+            {
+                if (mesReferencia == null || anoReferencia == null)
+                {
+                    return _bancoContext.Mensalidades
+                                                    .Where(m => m.Status == StatusEnum.Atrasada)
+                                                    .Count();
+
+                }
+                else
+                {
+                    return _bancoContext.Mensalidades
+                                                    .Where(m => m.DataVencimento.Month == mesReferencia &&
+                                                            m.DataVencimento.Year == anoReferencia && 
+                                                            m.Status == StatusEnum.Atrasada)
+                                                    .Count();
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public int QuantidadePagas(int? mesReferencia, int? anoReferencia)
+        {
+            if (mesReferencia == null || anoReferencia == null)
+            {
+                return _bancoContext.Mensalidades
+                                                .Where(m => m.Status == StatusEnum.Paga && m.DataPagamento != null)
+                                                .Count();
+
+            }
+            else
+            {
+                return _bancoContext.Mensalidades
+                                                .Where(m => m.DataVencimento.Month == mesReferencia &&
+                                                        m.DataVencimento.Year == anoReferencia &&
+                                                        m.Status == StatusEnum.Paga &&
+                                                        m.DataPagamento != null)
+                                                .Count();
+            }
+        }
+
+        public int QuantidadePendentes(int? mesReferencia, int? anoReferencia)
+        {
+            try
+            {
+                if(mesReferencia == null || anoReferencia == null)
+                {
+                    return _bancoContext.Mensalidades
+                                                    .Where(m => m.Status == StatusEnum.Pendente)
+                                                    .Count();
+
+                }
+                else
+                {
+                    return _bancoContext.Mensalidades
+                                                    .Where(m => m.DataVencimento.Month == mesReferencia &&
+                                                            m.DataVencimento.Year == anoReferencia &&
+                                                            m.Status == StatusEnum.Pendente)
+                                                    .Count();
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public double ValorAhReceber(int? mesReferencia, int? anoReferencia)
+        {
+            try
+            {
+                if (mesReferencia == null || anoReferencia == null)
+                {
+                    return _bancoContext.Mensalidades
+                                                    .Where(m => m.DataPagamento == null)
+                                                    .Sum(m => m.Valor);
+
+                }
+                else
+                {
+                    return _bancoContext.Mensalidades
+                                                    .Where(m => m.DataVencimento.Month == mesReferencia &&
+                                                            m.DataVencimento.Year == anoReferencia &&
+                                                            m.DataPagamento == null)
+                                                    .Sum(m => m.Valor);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

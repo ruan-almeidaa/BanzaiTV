@@ -51,6 +51,7 @@ builder.Services.AddScoped<ISessao, SessaoService>();
 builder.Services.AddScoped<IClienteViewModelService, ClienteViewModelService>();
 builder.Services.AddScoped<IMensalidadeViewModelService, MensalidadeViewModelService>();
 builder.Services.AddScoped<IOrquestracaoService, OrquestracaoService>();
+builder.Services.AddScoped<IVisaoGeralViewModelService, VisaoGeralViewModelService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

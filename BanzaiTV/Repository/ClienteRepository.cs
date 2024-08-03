@@ -108,5 +108,18 @@ namespace BanzaiTV.Repository
                 throw;
             }
         }
+
+        public int QuantidadeDeClientes()
+        {
+            try
+            {
+                return _bancoContext.Clientes.Count();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

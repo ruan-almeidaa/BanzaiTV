@@ -18,5 +18,9 @@ namespace BanzaiTV.Interfaces.IService
         void ExcluirMensalidadesDoCliente(ClienteModel cliente, StatusEnum? status);
         MensalidadeModel BuscaUltimaMensalidadeCliente(int idCliente);
         bool PlanoTemMensalidadesPendentes(int idPlano);
+        int QuantidadeAtrasadas(int? mesReferencia, int? anoReferencia);
+        int QuantidadePendentes(int? mesReferencia, int? anoReferencia);
+        int QuantidadePagas(int? mesReferencia, int? anoReferencia);
+        double ValorAhReceber(int? mesReferencia, int? anoReferencia);
     }
 }
