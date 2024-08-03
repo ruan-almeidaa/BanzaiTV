@@ -62,5 +62,18 @@ namespace BanzaiTV.Services
                 throw;
             }
         }
+
+        public bool Plano_VerificarSePlanoEstaEmUso(int id)
+        {
+            try
+            {
+                return _mensalidadeService.PlanoTemMensalidadesPendentes(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

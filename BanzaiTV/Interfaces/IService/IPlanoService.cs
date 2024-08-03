@@ -9,6 +9,5 @@ namespace BanzaiTV.Interfaces.IService
         PlanoModel Editar(PlanoModel plano);
         PlanoModel BuscaPorId(int id);
         bool Excluir(int id);
-        bool VerificarSePlanoEstaEmUso(int id);
     }
 }

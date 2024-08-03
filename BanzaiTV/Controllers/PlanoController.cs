@@ -9,10 +9,12 @@ namespace BanzaiTV.Controllers
     public class PlanoController : Controller
     {
         private readonly IPlanoService _planoService;
+        private readonly IOrquestracaoService _orquestracaoService;
         private readonly ISessao _sessao;
-        public PlanoController(IPlanoService planoService, ISessao sessao)
+        public PlanoController(IPlanoService planoService, IOrquestracaoService orquestracaoService,ISessao sessao)
         {
             _planoService = planoService;
+            _orquestracaoService = orquestracaoService;
             _sessao = sessao;
         }
 
@@ -64,7 +66,7 @@ namespace BanzaiTV.Controllers
             {
                 if(_sessao != null)
                 {
-                    bool planoEstaEmUso = _planoService.VerificarSePlanoEstaEmUso(id);
+                    bool planoEstaEmUso = _orquestracaoService.Plano_VerificarSePlanoEstaEmUso(id);
                     if (planoEstaEmUso) return RedirectToAction("NaoPermiteEditar", "Plano");
 
                     PlanoModel plano = _planoService.BuscaPorId(id);
@@ -108,17 +110,11 @@ namespace BanzaiTV.Controllers
         {
             try
             {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Home", "Index");
                 PlanoModel plano = _planoService.BuscaPorId(id);
-                if(_sessao.BuscarSessao() != null && plano != null)
-                {
-                    bool planoEstaEmUso = _planoService.VerificarSePlanoEstaEmUso(id);
-                    if (planoEstaEmUso) return RedirectToAction("NaoPermiteEditar", "Plano");
-                    return View(plano);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Plano");
-                }
+                bool planoEstaEmUso = _orquestracaoService.Plano_VerificarSePlanoEstaEmUso(plano.Id);
+                if (planoEstaEmUso) return RedirectToAction("NaoPermiteEditar", "Plano");
+                return View(plano);
             }
             catch (Exception)
             {

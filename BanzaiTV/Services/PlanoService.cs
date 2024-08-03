@@ -1,18 +1,15 @@
 ﻿using BanzaiTV.Interfaces.IRepository;
 using BanzaiTV.Interfaces.IService;
 using BanzaiTV.Models;
-using System.Numerics;
 
 namespace BanzaiTV.Services
 {
     public class PlanoService : IPlanoService
     {
         private readonly IPlanoRepository _planoRepository;
-        private readonly IMensalidadeService _mensalidadeService;
-        public PlanoService(IPlanoRepository planosRepository, IMensalidadeService mensalidadeService)
+        public PlanoService(IPlanoRepository planosRepository)
         {
             _planoRepository = planosRepository;
-            _mensalidadeService = mensalidadeService;
         }
 
         public PlanoModel BuscaPorId(int id)
@@ -74,19 +71,6 @@ namespace BanzaiTV.Services
             {
                 _planoRepository.Excluir(BuscaPorId(id));
                 return true;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public bool VerificarSePlanoEstaEmUso(int id)
-        {
-            try
-            {
-                return _mensalidadeService.PlanoTemMensalidadesPendentes(id);
             }
             catch (Exception)
             {
