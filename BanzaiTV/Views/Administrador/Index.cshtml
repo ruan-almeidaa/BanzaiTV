@@ -1,27 +1,81 @@
 ﻿@model BanzaiTV.ViewModel.VisaoGeralViewModel;
 
 <div class="container">
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <h4 class="p-3 border bg-light">Visão geral</h4>
 
-        <div clas="container">
-            <h1>Quantidade clientes: @Model.QuantidadeClientes</h1>
-            <h1>Quantidade atrasadas: @Model.QuantidadeMensalidadesAtrasadasMesAtual</h1>
-            <h1>Quantidade pendentes: @Model.QuantidadeMensalidadesPendentesMesAtual</h1>
-            <h1>Quantidade pagas: @Model.QuantidadeMensalidadesPagasMesAtual</h1>
-            <h1>Quantidade receber: @Model.ValorReceberMesAtual</h1>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.QuantidadeClientes</h3>
+                        <p class="card-text">CLIENTES CADASTRADOS</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col me-1 card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.QuantidadeMensalidadesAtrasadasMesAtual</h3>
+                        <p class="card-text">MENSALIDADES <strong>ATRASADAS</strong> NO MÊS ATUAL</p>
+                    </div>
+                </div>
+                <div class="col ms-1 card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                    <h3 class="card-title">@Model.QuantidadeMensalidadesPendentesMesAtual</h3>
+                    <p class="card-text">MENSALIDADES <strong>PENDENTES</strong> NO MÊS ATUAL</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col me-1 card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.QuantidadeMensalidadesPagasMesAtual</h3>
+                        <p class="card-text">MENSALIDADES <strong>PAGAS</strong> NO MÊS ATUAL</p>
+                    </div>
+                </div>
+                <div class="col ms-1 card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">R$ @Model.ValorReceberMesAtual</h3>
+                        <p class="card-text">EM ABERTO, PARA <strong>RECEBER</strong> NO MÊS ATUAL</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col me-1 card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.QuantidadeMensalidadesAtrasadas</h3>
+                        <p class="card-text">MENSALIDADES <strong>ATRASADAS</strong> NO TOTAL</p>
+                    </div>
+                </div>
+                <div class="col ms-1 card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.QuantidadeMensalidadesPendentes</h3>
+                    <p class="card-text">MENSALIDADES <strong>PENDENTES</strong> NO TOTAL</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col me-1 card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.QuantidadeMensalidadesPagas</h3>
+                        <p class="card-text">MENSALIDADES <strong>PAGAS</strong> NO TOTAL</p>
+                    </div>
+                </div>
+                <div class="col ms-1 card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">R$ @Model.ValorReceber</h3>
+                        <p class="card-text">EM ABERTO, PARA <strong>RECEBER</strong> NO TOTAL</p>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
-        <br />
-        <hr />
-        <div clas="container">
-            <h1>Quantidade atrasadas: @Model.QuantidadeMensalidadesAtrasadas</h1>
-            <h1>Quantidade pendentes: @Model.QuantidadeMensalidadesPendentes</h1>
-            <h1>Quantidade pagas: @Model.QuantidadeMensalidadesPagas</h1>
-            <h1>Quantidade receber: @Model.ValorReceber</h1>
-        </div>
-
-
-
-    </div>
-    <br />
 
 </div>
