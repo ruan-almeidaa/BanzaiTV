@@ -23,38 +23,83 @@ namespace BanzaiTV.Controllers
 
         public IActionResult Index()
         {
-            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+            try
+            {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
 
-            List<MensalidadeViewModel> mensalidades = _mensalidadeViewModelService.CarregaViewIndex();
-            return View(mensalidades);
+                List<MensalidadeViewModel> mensalidades = _mensalidadeViewModelService.CarregaViewIndex();
+                return View(mensalidades);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public IActionResult Cadastrar()
         {
-            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
-            MensalidadeViewModel mensalidadeViewModel = _mensalidadeViewModelService.CarregaViewCadastrar();
-            return View(mensalidadeViewModel);
+            try
+            {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                MensalidadeViewModel mensalidadeViewModel = _mensalidadeViewModelService.CarregaViewCadastrar();
+                return View(mensalidadeViewModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         [HttpPost]
         public IActionResult Cadastrar(MensalidadeModel mensalidade)
         {
-            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
-            _mensalidadeService.Cadastrar(mensalidade);
-            return RedirectToAction("Index", "Mensalidade");
+            try
+            {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                _mensalidadeService.Cadastrar(mensalidade);
+                return RedirectToAction("Index", "Mensalidade");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
         public IActionResult Editar(int id)
         {
-            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
-            return View(_mensalidadeViewModelService.CarregaViewEditar(id));
+            try
+            {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                return View(_mensalidadeViewModelService.CarregaViewEditar(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         [HttpPost]
         public IActionResult Editar(MensalidadeModel mensalidade)
         {
-            if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
-            _mensalidadeService.Editar(mensalidade);
-            return RedirectToAction("Index", "Mensalidade");
+            try
+            {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                _mensalidadeService.Editar(mensalidade);
+                return RedirectToAction("Index", "Mensalidade");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
 
         }
 
