@@ -25,28 +25,34 @@ namespace BanzaiTV.Controllers
 
         public IActionResult Index()
         {
-            if (_sessao.BuscarSessao() != null)
+            try
             {
-               List <ClienteModel> clientes = _clienteService.BuscarTodos();
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                List<ClienteModel> clientes = _clienteService.BuscarTodos();
                 return View(clientes);
             }
-            else
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Home");
+
+                throw;
             }
+
         }
 
         public IActionResult Cadastrar()
         {
-            if (_sessao.BuscarSessao() != null)
+            try
             {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
                 ClienteViewModel clientePlanosViewModel = _clienteViewModelService.CarregaViewCadastrar();
                 return View(clientePlanosViewModel);
             }
-            else
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Home");
+
+                throw;
             }
+
         }
 
         [HttpPost]
@@ -54,7 +60,7 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
                 _orquestracaoService.Cliente_Cadastrar(cliente);
                 return RedirectToAction("Index");
             }
@@ -71,15 +77,9 @@ namespace BanzaiTV.Controllers
             
             try
             {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
                 ClienteViewModel cliente = _clienteViewModelService.CarregaViewEditar(id);
-                if (_sessao.BuscarSessao() != null && cliente != null)
-                {
-                    return View(cliente);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Cliente");
-                }
+                return View(cliente);
             }
             catch (Exception)
             {
@@ -110,15 +110,9 @@ namespace BanzaiTV.Controllers
         {
             try
             {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
                 ClienteModel cliente = _clienteService.BuscaPorId(id);
-                if (_sessao.BuscarSessao() != null && cliente != null)
-                {
-                    return View(cliente);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Cliente");
-                }
+                return View(cliente);
 
             }
             catch (Exception)
@@ -132,12 +126,9 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                if((_sessao.BuscarSessao() != null)){
-                    _clienteService.Excluir(id);
-                    return RedirectToAction("Index", "Cliente");
-                }else { 
-                    return RedirectToAction("Index", "Home");
-                }
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                _clienteService.Excluir(id);
+                return RedirectToAction("Index", "Cliente");
                 
 
             }
