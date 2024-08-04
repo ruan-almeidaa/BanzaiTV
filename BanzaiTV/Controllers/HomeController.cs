@@ -8,7 +8,7 @@ namespace BanzaiTV.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Login", "Administrador");
         }
 
         public IActionResult Privacy()
