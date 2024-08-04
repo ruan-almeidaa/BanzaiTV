@@ -22,14 +22,9 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                if (_sessao != null) {
-                    List<PlanoModel> planos = _planoService.BuscarTodos();
-                    return View(planos);
-                }
-                else {
-                    return RedirectToAction("Index", "Home");
-                }
-
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                List<PlanoModel> planos = _planoService.BuscarTodos();
+                return View(planos);
 
             }
             catch (Exception)
@@ -42,13 +37,24 @@ namespace BanzaiTV.Controllers
 
         public IActionResult Cadastrar()
         {
-            return View();
+            try
+            {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                return View();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
         [HttpPost]
         public IActionResult Cadastrar(PlanoModel plano)
         {
             try
             {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
                 _planoService.Cadastrar(plano);
                 return RedirectToAction("Index", "Plano");
             }
@@ -64,18 +70,12 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                if(_sessao != null)
-                {
-                    bool planoEstaEmUso = _orquestracaoService.Plano_VerificarSePlanoEstaEmUso(id);
-                    if (planoEstaEmUso) return RedirectToAction("NaoPermiteEditar", "Plano");
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                bool planoEstaEmUso = _orquestracaoService.Plano_VerificarSePlanoEstaEmUso(id);
+                if (planoEstaEmUso) return RedirectToAction("NaoPermiteEditar", "Plano");
 
-                    PlanoModel plano = _planoService.BuscaPorId(id);
-                    return View(plano);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+                PlanoModel plano = _planoService.BuscaPorId(id);
+                return View(plano);
             }
             catch (Exception)
             {
@@ -88,15 +88,9 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                if (_sessao != null)
-                {
-                    _planoService.Editar(plano);
-                    return RedirectToAction("Index", "Plano");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                _planoService.Editar(plano);
+                return RedirectToAction("Index", "Plano");
 
             }
             catch (Exception)
@@ -127,15 +121,9 @@ namespace BanzaiTV.Controllers
         {
             try
             {
-                if ((_sessao.BuscarSessao() != null))
-                {
-                    _planoService.Excluir(id);
-                    return RedirectToAction("Index", "Plano");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
+                _planoService.Excluir(id);
+                return RedirectToAction("Index", "Plano");
 
             }
             catch (Exception)
@@ -150,6 +138,7 @@ namespace BanzaiTV.Controllers
         {
             try
             {
+                if (_sessao.BuscarSessao() == null) return RedirectToAction("Index", "Home");
                 return View();
             }
             catch (Exception)
