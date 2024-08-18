@@ -9,9 +9,19 @@ using BanzaiTV.Repository;
 using BanzaiTV.Services;
 using BanzaiTV.ViewModelServices;
 using Hangfire;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurar opções HSTS
+builder.Services.AddHsts(options =>
+{
+    options.MaxAge = TimeSpan.FromDays(365 * 100); // 100 anos
+    options.IncludeSubDomains = true; // Inclui subdomínios
+    options.Preload = true; // Sinaliza para que o site seja considerado para a lista de preload
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -83,9 +93,12 @@ RecurringJob.AddOrUpdate(() => hangfire.AtualizarStatusRenovacaoClientes(), Cron
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    // Configure the HTTP request pipeline.
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/Home/Error");
+        app.UseHsts(); // Apenas adiciona o middleware, sem parâmetros
+    }
 }
 
 app.UseHttpsRedirection();
