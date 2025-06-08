@@ -45,8 +45,12 @@ Quando o Sistema identifica que o cliente só possui uma mensalidade em aberto, 
 
 ## Screenshots
 
+![App Screenshot](https://i.imgur.com/gOAtGga.png)
 ![App Screenshot](https://i.imgur.com/cribBC6.png)
 ![App Screenshot](https://i.imgur.com/Lp0hu8U.png)
+![App Screenshot](https://i.imgur.com/SUec5VP.png)
+![App Screenshot](https://i.imgur.com/gnPp8Ad.png)
+![App Screenshot](https://i.imgur.com/iDlpCyg.png)
 
 ## Tecnologias Utilizadas
 
