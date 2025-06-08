@@ -42,13 +42,11 @@ O sistema possui uma atualização automática, indicando o status de cada mensa
 ### Renovação Automática de Clientes
 
 Quando o Sistema identifica que o cliente só possui uma mensalidade em aberto, é exibido ao administrador, um ícone indicando que aquele cliente precisa ser renovado. Quando renovado, as mensalidades são geradas novamente, de acordo com o plano escolhido.
+
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/p3hqZ7S.png)
-![App Screenshot](https://i.imgur.com/9Utt8rg.png)
-![App Screenshot](https://i.imgur.com/Rzbq1aw.png)
-![App Screenshot](https://i.imgur.com/7LdSFet.png)
-![App Screenshot](https://i.imgur.com/fKin8LH.png)
+![App Screenshot](https://i.imgur.com/cribBC6.png)
+![App Screenshot](https://i.imgur.com/Lp0hu8U.png)
 
 ## Tecnologias Utilizadas
 
